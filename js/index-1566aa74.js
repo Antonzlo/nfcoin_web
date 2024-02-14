@@ -51,7 +51,7 @@ const Fragment = jsxRuntimeExports.Fragment,
     apiHost: "https://test.yescoin.space",
     tonConnectManifestUrl: "https://cdn.joincommunity.xyz/assets/manifest.json",
     tonConnectWalletsListSource: "https://cdn.joincommunity.xyz/assets/wallets.json",
-    botLink: "https://t.me/NFCoin_bot",
+    botLink: "https://t.me/donotcoin_bot",
     //accessToken: {}.VITE_ACCESS_TOKEN,
   },
   prodConfig = {
@@ -59,7 +59,7 @@ const Fragment = jsxRuntimeExports.Fragment,
     apiHost: "https://clicker-api.joincommunity.xyz",
     tonConnectManifestUrl: "https://cdn.joincommunity.xyz/assets/manifest.json",
     tonConnectWalletsListSource: "https://cdn.joincommunity.xyz/assets/wallets.json",
-    botLink: "https://t.me/NFCoin_bot",
+    botLink: "https://t.me/donotcoin_bot",
   };
 let config;
 switch ( "prod1" ) {
@@ -2563,12 +2563,15 @@ const useBoostStore = create( ( e, t ) => ( {
   },
   activeTurboApi = async () => {
     const e = await ApiService.post( { endpoint: "/clicker/core/active-turbo" } );
-    if ( e.ok ) return e.data[ 0 ];
+    if ( e.ok ) {
+      document.multipleValue = e.data[0].multiple;
+      return e.data[ 0 ]
+    };
     throw e.data;
   },
   checkTurboApi = async () => {
     const e = await ApiService.post( { endpoint: "/clicker/core/check-turbo" } );
-    if ( ( console.log( e.data ), e.ok ) ) return e.data[ 0 ];
+    if ( ( console.log( e.data ), e.ok ) ) return e.data[ 0 ]
     throw e.data;
   },
   saveClickerCountApi = async ( count, hash, turbo, lastAvailableCoins ) => {
@@ -2639,7 +2642,7 @@ const useBoostStore = create( ( e, t ) => ( {
   },
   diffInSeconds = ( e, t ) => {
     const s = t.getTime() - e.getTime();
-    return Math.floor( s / 1e3 );
+    return Math.floor( s / 1000 );
   },
   calculateAvailableClicks = ( e, t ) => {
     if ( !e ) return 0;
@@ -2756,7 +2759,9 @@ const useBoostStore = create( ( e, t ) => ( {
       if ( !( getProf().turboTimes > 0 || getProf().isTurboMode || getProf().turboGift ) )
         try {
           const s = await checkTurboApi();
-          s != null && s.turbo && setProf( { turboGift: !0, turboGiftExpire: Date.now() + 7e3 } );
+          if ()
+            s != null && s.turbo && setProf( { turboGift: !0, turboGiftExpire: Date.now() + 7e3 } );
+          
         } catch ( s ) {
           console.error( s );
         }
@@ -2767,6 +2772,7 @@ const useBoostStore = create( ( e, t ) => ( {
       ( s
         ? activeTurboApi().then( ( o ) => {
           console.log( "turbo", o );
+          document.multipleValue = o.multiple;
           setProf( { isTurboMode: 1, turboSettings: o, clicksThreshold: calculateClicksThreshold( n, 1, o ), cooldown: 0 } );
         } )
         : setProf( { isTurboMode: 0, turboSettings: null, clicksThreshold: calculateClicksThreshold( n, 0, null ) } ) );
@@ -4867,7 +4873,7 @@ function ClickerBoostsExplanationPage() {
             spacingChild: "4",
             growChild: !0,
             children: [
-              jsxs( Button$1, { type: "basic", onClick: () => e.openTelegramLink( "https://t.me/NFCoin_bot" ), children: [ jsx( Icon, { name: "telegram" } ), " Join" ] } ),
+              jsxs( Button$1, { type: "basic", onClick: () => e.openTelegramLink( "https://t.me/donotcoin_bot" ), children: [ jsx( Icon, { name: "telegram" } ), " Join" ] } ),
               jsxs( Button$1, { type: "basic", onClick: () => e.openLink( "https://twitter.com/foxhustle_twi" ), children: [ jsx( Icon, { name: "x", colorFill: "primary" } ), " Follow" ] } ),
             ],
           } ),
@@ -5159,10 +5165,13 @@ const root$3 = "_root_9azk3_2",
                 funMode: funMode,
                 clickValue: clickValue,
                 cooldown: cooldown,
-                handleClick: handleClick } ) => {
+                handleClick: handleClick,
+                multiple: mty,
+              } ) => {
     const a = reactExports.useRef( null ),
       [ getPos, setPos ] = reactExports.useState( { translateZ: 0, rotateX: 0, rotateY: 0 } ),
       [ l, d ] = reactExports.useState( [] ),
+      [ mlty, setMlty ] = reactExports.useState( mty ),
       { currentSkin: currentSkin } = useBoostStore(),
       p = ( u ) => {
         if ( ( handleClick(), a.current ) ) {
@@ -5185,6 +5194,16 @@ const root$3 = "_root_9azk3_2",
       m = ( u ) => {
         setPos( { translateZ: 0, rotateX: 0, rotateY: 0 } );
       };
+    reactExports.useEffect( () => {
+      setMlty(mty);
+      // if (document.pepaSprite) {
+      //   document.pepaSprite.mlty = mlty;
+      // }
+    }, [ mty ] )
+    ;
+    if (document.pepaSprite) {
+      document.pepaSprite.mlty = mty;
+    }
     return jsx( AnimatePresence, {
       mode: "popLayout",
       children: canIClickPlease
@@ -5202,171 +5221,218 @@ const root$3 = "_root_9azk3_2",
                   onTouchStart: p,
                   onTouchEnd: m,
                   onClick: () => {
-                    if ( !document.hzkak ) {
-                      document.hzkak = true
-                      class Sprite {
-                        constructor ( options ) {
-                          this.ctx = options.ctx;
-                          
-                          this.image = options.image;
-                          this.imageStars = options.imageStars;
-                          
-                          this.frameIndex = 0;
+                    
+                    class Sprite {
+                      constructor ( options ) {
+                        this.ctx = options.ctx;
+                        
+                        this.image = options.image;
+                        this.imageStars = options.imageStars;
+                        this.imageAngry = options.imageAngry;
+                        
+                        this.frameIndex = 0;
+                        this.tickCount = 0;
+                        this.ticksPerFrame = options.ticksPerFrame || 0;
+                        this.numberOfFrames = options.numberOfFrames || 1;
+                        
+                        this.width = options.width;
+                        this.height = options.height;
+                        
+                        this.clickTimeout = null;
+                        
+                        this.mlty = options.mlty;
+                        
+                        this.loop = this.start();
+                      }
+                      
+                      reset() {
+                        this.ticksPerFrame = 0;
+                      }
+                      
+                      update() {
+                        this.tickCount++;
+                        
+                        if ( this.tickCount > this.ticksPerFrame ) {
+                          //console.log( 'frame', this.tickCount );
                           this.tickCount = 0;
-                          this.ticksPerFrame = options.ticksPerFrame || 0;
-                          this.numberOfFrames = options.numberOfFrames || 1;
                           
-                          this.width = options.width;
-                          this.height = options.height;
-                          
-                          this.firstClick = false;
-                          this.maxClicksPerSec = 0;
-                          this.clickTimeout = null;
-                          this.deleteMaxSpeedTimeout = null;
-                          
-                          this.tClick = new Date();
-                          
-                          this.start();
-                        }
-                        
-                        reset() {
-                          this.ticksPerFrame = 0;
-                          // this.frameIndex = 0;
-                        }
-                        
-                        update() {
-                          this.tickCount++;
-                          
-                          if ( this.tickCount > this.ticksPerFrame ) {
-                            this.tickCount = 0;
-                            if ( this.frameIndex < this.numberOfFrames - 1 ) {
-                              this.frameIndex++;
-                            } else {
-                              this.frameIndex = 0;
-                            }
+                          if ( this.frameIndex < this.numberOfFrames - 1 ) {
+                            this.frameIndex++;
+                          } else {
+                            this.frameIndex = 0;
                           }
                         }
+                      }
+                      
+                      render() {
+                        let img = this.image;
+                        if (!this.mlty) {
+                          img = this.image;
+                        } else if (this.mlty > 0) {
+                          img = this.image;
+                        } else {
+                          img = this.imageAngry;
+                        }
                         
-                        render() {
-                          this.ctx.clearRect( 0, 0, this.width / this.numberOfFrames, this.height );
+                        this.ctx.clearRect( 0, 0, this.width / this.numberOfFrames, this.height );
+                        this.ctx.drawImage(
+                          img,
+                          this.frameIndex * this.width / this.numberOfFrames,
+                          0,
+                          this.width / this.numberOfFrames,
+                          this.height,
+                          0,
+                          0,
+                          this.width / this.numberOfFrames,
+                          this.height
+                        )
+                        
+                        
+                        if ( this.ticksPerFrame !== 0 && (this.mlty > 0 || !this.mlty)) {
+                          const starSize = 30 - this.ticksPerFrame * 6;
                           this.ctx.drawImage(
-                            this.image,
+                            this.imageStars,
                             this.frameIndex * this.width / this.numberOfFrames,
                             0,
                             this.width / this.numberOfFrames,
                             this.height,
-                            0,
-                            0,
-                            this.width / this.numberOfFrames,
-                            this.height
+                            -starSize,
+                            -starSize,
+                            this.width / this.numberOfFrames + starSize * 2,
+                            this.height + starSize * 2
                           )
-                          if ( this.ticksPerFrame !== 0 ) {
-                            this.ctx.drawImage(
-                              this.imageStars,
-                              this.frameIndex * this.width / this.numberOfFrames,
-                              0,
-                              this.width / this.numberOfFrames,
-                              this.height,
-                              0,
-                              0,
-                              this.width / this.numberOfFrames,
-                              this.height
-                            )
-                          }
-                        }
-                        
-                        start() {
-                          let loop = () => {
-                            this.update();
-                            this.render();
-                            
-                            if ( this.ticksPerFrame !== 0 ) {
-                              window.requestAnimationFrame( loop );
-                            }
-                          }
-                          window.requestAnimationFrame( loop );
-                          
-                          document.querySelector('._notcoin_9azk3_34').addEventListener('click', () => {
-                            if  (document.querySelector('.canvas_jasdeq_bg')) {
-                              document.querySelector('.canvas_jasdeq_bg').classList.remove('canvas_jasdeq_bg');
-                            }
-                            
-                          });
-                          
-                          document.querySelector( '._notcoin_9azk3_34').addEventListener( 'click', () => {
-                            
-                            clearTimeout( this.clickTimeout );
-                            this.clickTimeout = null;
-                            
-                            const diff = new Date() - this.tClick;
-                            
-                            if ( diff < 1000 ) {
-                              if (diff > 600 ) {
-                                this.ticksPerFrame = 12;
-                              } else if (diff > 300) {
-                                this.ticksPerFrame = 11;
-                              } else {
-                                this.ticksPerFrame = 10;
-                              }
-                            }
-                            else {
-                              this.ticksPerFrame = 13;
-                            }
-                            
-                            loop();
-                            this.clickTimeout = setTimeout( () => {
-                              this.reset();
-                            }, 1500 )
-                            
-                            this.tClick = new Date();
-                            
-                            
-                          } )
                         }
                       }
                       
-                      let canvas = document.querySelector( '.canvas_jasdeq' );
-                      canvas.width = 2000;
-                      canvas.height = 250;
-                      let coinImage = document.createElement( 'img' );
-                      let imageStars = document.createElement( 'img' );
+                      start() {
+                        let loop = () => {
+                          this.update();
+                          this.render();
+                          
+                          if ( this.ticksPerFrame !== 0 ) {
+                            window.requestAnimationFrame( loop );
+                          }
+                        }
+                        window.requestAnimationFrame( loop );
+                        
+                        document.querySelector( '._notcoin_9azk3_34' ).addEventListener( 'click', () => {
+                          if ( document.querySelector( '.canvas_jasdeq_bg' ) ) {
+                            document.querySelector( '.canvas_jasdeq_bg' ).classList.remove( 'canvas_jasdeq_bg' );
+                          }
+                          
+                        } );
+                        
+                        document.querySelector( '._notcoin_9azk3_34' ).addEventListener( 'click', () => {
+                          
+                          clearTimeout( this.clickTimeout );
+                          this.clickTimeout = null;
+                          
+                          
+                          if ( this.ticksPerFrame === 0 ) {
+                            this.ticksPerFrame = 6;
+                            loop();
+                          }
+                          if (this.mlty < 0) {
+                            if (!candle.classList.contains('candle__red_sdfjkg')) candle.classList.add('candle__red_sdfjkg')
+                          } else {
+                            if (candle.classList.contains('candle__red_sdfjkg')) candle.classList.remove('candle__red_sdfjkg')
+                          }
+                          
+                          if (this.mlty > 0) {
+                            if (!boxCanvas.classList.contains('pepa-shaker_ajdkqt')) boxCanvas.classList.add('pepa-shaker_ajdkqt')
+                            this.ticksPerFrame = 1;
+                            let candleHeight = candleBody.offsetHeight;
+                            let stickHeight = stick.offsetHeight;
+                            if (candleBody.offsetHeight < window.innerHeight) {
+                              candleHeight += 20;
+                              stickHeight += 20;
+                              candleBody.style.height = `${ candleHeight.toString() }px`;
+                              stick.style.height = `${ stickHeight.toString() }px`;
+                            }
+                          } else {
+                            candleBody.style.height = "";
+                            stick.style.height = "";
+                            if (boxCanvas.classList.contains('pepa-shaker_ajdkqt')) boxCanvas.classList.remove('pepa-shaker_ajdkqt')
+                          }
+                        } );
+                        return loop;
+                      }
+                    }
+                    const candle = document.querySelector( '.candle_asdfjh' );
+                    const candleBody = document.querySelector( '.candle-body_qpworq' );
+                    const stick = document.querySelector( '.stick_adahfj' );
+                    const notcoin = document.querySelector( '._notcoin_9azk3_34' );
+                    const boxCanvas = document.querySelector('.box-canvas_gdahkd');
+                    
+                    if (document.pepaSprite) {
+                      document.pepaSprite.mlty = mlty;
+                    }
+                    
+                    if (!notcoin.getAttribute('listener')) {
                       
-                      coinImage.src = 'https://yescoin.space/clicker/pepa.png';
-                      imageStars.src = 'https://yescoin.space/clicker/eyes.png';
+                      let canvas = document.querySelector( '.canvas_jasdeq' );
+                      canvas.width = 6000;
+                      canvas.height = 250;
+                      let happyImage = document.createElement( 'img' );
+                      let starsImage = document.createElement( 'img' );
+                      let angryImage = document.createElement( 'img' );
+                      
+                      happyImage.src = '/clicker/pepa-happy.png';
+                      starsImage.src = '/clicker/eyes.png';
+                      angryImage.src = '/clicker/pepa-angry.png';
                       let sprite = new Sprite( {
                         ctx: canvas.getContext( '2d' ),
-                        image: coinImage,
-                        imageStars: imageStars,
-                        width: 2000,
+                        image: happyImage,
+                        imageStars: starsImage,
+                        imageAngry: angryImage,
+                        width: 6000,
                         height: 250,
-                        numberOfFrames: 8,
+                        numberOfFrames: 24,
                         ticksPerFrame: 0,
+                        mlty: mlty,
                       } )
+                      document.pepaSprite = sprite;
                       
-                      const candle = document.querySelector( '.candle_asdfjh' );
-                      let candleHeight = 10;
+                      let candleHeight = 20;
                       
-                      document.querySelector( '._notcoin_9azk3_34').addEventListener( 'click', () => {
-                        if ( candleHeight < 300 ) {
-                          const boost = sprite.ticksPerFrame > 0 ? 13 - sprite.ticksPerFrame : 1;
-                          candleHeight += 10 * boost;
+                      notcoin.setAttribute('listener', true)
+                      notcoin.addEventListener( 'click', () => {
+                        sprite.mlty = mlty;
+                        if ( candleHeight < 300 && !sprite.godCandle) {
+                          candleHeight += 10;
+                          sprite.ticksPerFrame = Math.max( 1, sprite.ticksPerFrame - 1 );
                         }
                         
                       } );
                       
+                      function convertRange( value, r1 = [10, 200], r2 = [5,1] ) {
+                        return ( value - r1[ 0 ] ) * ( r2[ 1 ] - r2[ 0 ] ) / ( r1[ 1 ] - r1[ 0 ] ) + r2[ 0 ];
+                      }
+                      
+                      
                       setInterval( () => {
+                        if (sprite.godCandle) {
+                          candleHeight = 200;
+                          return
+                        }
                         candle.style.height = `${candleHeight.toString()}px`;
-                        if ( candleHeight > 200 ) {
+                        if(sprite.ticksPerFrame) sprite.ticksPerFrame = Math.max( 1, convertRange(candleHeight) );
+                        if (candleHeight > 300) {
+                          candleHeight -= 50;
+                        } else if ( candleHeight > 200) {
                           candleHeight -= 30;
                         } else if ( candleHeight > 100 ) {
                           candleHeight -= 20;
                         } else {
-                          if ( candleHeight > 10 ) {
+                          if ( candleHeight > 20 ) {
                             candleHeight -= 10;
-                          }
+                          } else sprite.reset();
                         }
+                        
+                        
                       }, 500 );
                     }
+                    
                   },
                   children: [
                     jsx( "div", {
@@ -5377,10 +5443,19 @@ const root$3 = "_root_9azk3_2",
                     } ),
                     jsx( "div", {
                       className: "candle_asdfjh",
-                      children: jsx( 'div', {
-                        className: "stick_adahfj",
-                      } ),
-                    } )
+                      children: [
+                        jsx( 'div', {
+                          className: "stick_adahfj",
+                        } ),
+                        jsx( 'div', {
+                          className: "candle-body_qpworq",
+                        } )
+                      ],
+                    } ),
+                    jsx("button", {
+                      className: "canvas-btn_djhfsdj",
+                      children: "BUY",
+                    })
                   ],
                 } ),
               } ),
@@ -5572,11 +5647,13 @@ const root$3 = "_root_9azk3_2",
   TurboPussy = ( { show: e, times: t, onClick: s, multiple: mlty } ) => {
     const [ n, o ] = reactExports.useState( { top: 0, left: 0 } ),
       [ r, a ] = reactExports.useState( "" ),
-      [ imgId, setImgId ] = reactExports.useState( 1 ),
-      [ imgSrc, setImgSrc ] = reactExports.useState(() => mlty < 0 ? '/clicker/head-bad.png' : '/clicker/head-good-1.png' ),
       c = () => {
         s();
       };
+    // let imgId = Math.round( Math.random() ) + 1;
+    let imgSrc = '/clicker/head-bad.png';
+// if (document.multipleValue > 0) imgSrc = `/clicker/head-good-${imgId}.png`;
+    
     return (
       reactExports.useEffect( () => {
         const i = randomNumber( 0, window.innerHeight - 100 ),
@@ -5592,14 +5669,6 @@ const root$3 = "_root_9azk3_2",
           _ = d[ randomNumber( 0, d.length - 1 ) ];
         a( _ ), o( { top: i, left: l } );
       }, [] ),
-        reactExports.useEffect( () => {
-          setImgId(Math.round(Math.random()) + 1)
-          if (mlty < 0) {
-            setImgSrc("/clicker/head-bad.png");
-          } else {
-            setImgSrc(`/clicker/head-good-${imgId}.png`);
-          }
-        }, [mlty]),
         jsx( AnimatePresence, {
           children:
             e &&
@@ -6471,7 +6540,7 @@ function ClickerStatisticsPage() {
   const e = useNavigate(),
     { userProfile: t } = useClickerStore(),
     { fetchStatistics: s, totalUsers: n, onlineUsers: o, onlineToday: r, totalBalance: a, totalBurned: c, isLoaded: i } = useStatisticsStore(),
-    l = `https://t.me/NFCoin_bot/start?rp_${t == null ? void 0 : t.userId}`,
+    l = `https://t.me/donotcoin_bot/start?rp_${t == null ? void 0 : t.userId}`,
     [ d, _ ] = useToggle( !1 ),
     [ p, m ] = useToggle(),
     [ u, y ] = reactExports.useState( null ),
@@ -7215,11 +7284,11 @@ function ClickerMainPage() {
       switchTurbo: switchTurbo,
       checkTurboGiftValidity: checkTurboGiftValidity,
       checkTurbo: h,
-      fetchRobotBalance: b,
+      fetchRobotBalance: fetchRobot,
       claimRobotMinedCoins: claimRobot,
     } = useClickerStore(),
     [ getA, setA ] = reactExports.useState( !!( !newbie && !isTurbo && ( turboTimes >= 1 || turboGift ) ) ),
-    [ getB, setB ] = reactExports.useState( !1 ),
+    [ showRobot, setB ] = reactExports.useState( !1 ),
     { currentSkin: L } = useBoostStore(),
     okToClick = !isLoad && availableToClick > 0 && cooldown === 0,
     tgapp = window.Telegram.WebApp,
@@ -7254,12 +7323,13 @@ function ClickerMainPage() {
       setA( !!( !newbie && !isTurbo && ( turboTimes >= 1 || turboGift ) ) );
     }, [ isTurbo, turboTimes, turboGift ] ),
     reactExports.useEffect( () => {
-      const F = diffInSeconds( new Date( lastMiningAt ), new Date() ) > 3600;
-      userProfile != null && userProfile.withRobot && F && q();
+      const hour = diffInSeconds( new Date( lastMiningAt ), new Date() ) > 3600
+      console.log('hour', hour, diffInSeconds( new Date( lastMiningAt ), new Date() ));
+      userProfile != null && userProfile.withRobot && hour && onRobot();
     }, [ userProfile, lastMiningAt ] );
-  const [ z, w ] = reactExports.useState( !1 ),
-    q = async () => {
-      z || ( w( !0 ), ( await b() ) && ( setB( !0 ), w( !1 ) ) );
+  const [ getS, setS ] = reactExports.useState( !1 ),
+    onRobot = async () => {
+      getS || ( setS( !0 ), ( await fetchRobot() ) && ( setB( !0 ), setS( !1 ) ) );
     },
     M = L === "default" ? `league-${userProfile == null ? void 0 : userProfile.leagueId}` : L;
   return jsxs( Page, {
@@ -7283,7 +7353,7 @@ function ClickerMainPage() {
       newbie && jsx( "div", { style: { height: "195px" } } ),
       jsx( Notcoin, { canIClickPlease: okToClick, sleep: isSleep, funMode: isTurbo, clickValue: calculateClickValue( isTurbo, turboSettings, clickValue ), cooldown: cooldown, handleClick: I, multiple: turboSettings == null ? void 0 : turboSettings.multiple } ),
       !newbie && userProfile && jsx( Progress, { current: availableToClick, profile: userProfile } ),
-      jsx( Robot, { isShown: getB, minedAmount: robotMined, setShow: setB, claimAction: claimRobot } ),
+      jsx( Robot, { isShown: showRobot, minedAmount: robotMined, setShow: setB, claimAction: claimRobot } ),
     ],
   } );
 }
