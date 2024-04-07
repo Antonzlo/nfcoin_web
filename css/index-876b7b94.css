@@ -1,18 +1,33 @@
+@font-face {
+  font-family: 'Inkverse';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inkverse'),
+  url('../fonts/Inkverse.woff') format('woff'),
+  url('../fonts/Inkverse.ttf') format('truetype');
+}
+body {
+  font-family: Inkverse !important;
+
+}
+
+
 .canvas_jasdeq {
-  height: 250px;
+  height: 350px;
 }
 .canvas_jasdeq_bg {
-  background: url(https://yescoin.space/clicker/pepa-bg.png) no-repeat;
+  background: url(http://localhost:5173/img/pepa-bg.png) no-repeat;
   background-size: contain;
 }
 .box-canvas_gdahkd {
   flex: 1 1 50%;
-  overflow: hidden;
-  width: 250px;
-  height: 250px;
+  /* overflow: hidden; */
+  width: 380px;
+  height: 350px;
   order: 2;
 }
 .candle_asdfjh {
+  display: none;
   flex: 1 0 30px;
   position: relative;
   min-height: 20px;
@@ -21,7 +36,6 @@
   background-color: #0d8e33;
   order: 1;
   overflow: visible;
-
 }
 .candle-body_qpworq {
   position: absolute;
@@ -76,6 +90,7 @@
   100% { transform: translateX(0) }
 }
 .canvas-btn_djhfsdj {
+  font-family: In;
   display: inline-flex;
   flex-basis: 100%;
   align-items: center;
@@ -292,9 +307,9 @@ body[data-mode="dark"] ._button_19oqi_93:active {
 ._root_j8rcd_1 {
   padding: 0 16px;
   text-align: center;
-  border-radius: 14px;
+  /* border-radius: 14px; */
   font-size: 17px;
-  height: 50px;
+  height: 58px;
   font-weight: 590;
   border: 0;
   display: flex;
@@ -335,8 +350,9 @@ body[data-mode="dark"] ._root_j8rcd_1:active {
   color: #fff;
 }
 ._type-orange_j8rcd_48 {
-  background: linear-gradient(101deg, #ffa800 25.94%, #f47e3c 94.32%);
-  box-shadow: 0 2px 28px #00001c0f, 0 0 1px #00001c1f;
+  /* background: linear-gradient(101deg, #ffa800 25.94%, #f47e3c 94.32%); */
+  /* box-shadow: 0 2px 28px #00001c0f, 0 0 1px #00001c1f; */
+  background: url(/clicker/vibin/btn-black-bg.png) no-repeat center center / cover;
 }
 ._type-inline-link_j8rcd_52 {
   height: auto;
@@ -426,6 +442,17 @@ body[data-mode="dark"] ._root_j8rcd_1:active {
 ._padding-0-0-24_goxyy_85 {
   padding: 0 0 24px;
 }
+._padding-0-0-24_goxyy_85._direction-row_goxyy_233 {
+  overflow: visible;
+  background: url(/clicker/vibin/welcome-bg.png) no-repeat center center / cover;
+  background-size: 100%;
+}
+
+._padding-0-0-24_goxyy_85 {
+  background: url(/clicker/vibin/invite-bg.png) no-repeat center center / cover;
+  background-size: 100%;
+}
+
 ._padding-0-16-24_goxyy_89 {
   padding: 0 16px 24px;
 }
@@ -1061,11 +1088,11 @@ body[data-mode="dark"] ._button_1l3ii_86:active {
   height: 40px;
 }
 ._size-100_76zp5_65 {
-  min-width: 100px;
-  width: 100px;
-  height: 100px;
+  min-width: 150px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  box-shadow: 0 0 30px 2px rgba(255, 255, 255, 1);
+  /* box-shadow: 0 0 30px 2px rgba(255, 255, 255, 1); */
 }
 ._size-112_76zp5_71 {
   min-width: 112px;
@@ -1180,7 +1207,9 @@ body[data-mode="dark"] ._button_1l3ii_86:active {
   margin-left: 0;
   margin-right: 0;
   border-radius: 16px;
-  background-color: var(--color-bg-fifth);
+  /* background-color: var(--color-bg-fifth); */
+  background: url(/clicker/vibin/list-big-bg.png) no-repeat center center / cover;
+  background-size: 100% 100%;
 }
 ._inset_1ck1j_13 > *:first-child {
   border-top-left-radius: 5px;
@@ -1626,7 +1655,7 @@ body[data-mode="dark"] ._rippleEffect_luci1_203:active {
   width: 72px;
 }
 ._icon-color-pale-grey_sfea9_118 {
-  background-color: var(--color-bg-tertiary);
+  /* background-color: var(--color-bg-tertiary); */
 }
 ._icon-color-grey_sfea9_121 {
   background-color: var(--color-text-fourth);
@@ -2249,6 +2278,7 @@ body[data-mode="dark"] ._solidTabButton_1aach_48 {
   line-height: 22px;
 }
 ._typeface-body_1ii32_203 {
+  letter-spacing: 0.5px;
   font-size: 17px;
   font-weight: 400;
   line-height: 22px;
@@ -2419,7 +2449,7 @@ body[data-mode="dark"] ._solidTabButton_1aach_48 {
   --color-bg-tertiary: var(--palette-transparent-white-05);
   --color-bg-fourth: var(--palette-transparent-white-08);
   --color-bg-fifth: var(--palette-transparent-white-12);
-  --color-text-primary: var(--palette-white);
+  --color-text-primary: var(--palette-dark);
   --color-text-secondary: var(--palette-transparent-white-80);
   --color-text-tertiary: var(--palette-transparent-white-30);
   --color-text-fourth: var(--palette-transparent-white-18);
@@ -2488,7 +2518,8 @@ select {
 }
 :root {
   --font-display: -apple-system, "SF Pro Text", "SF UI Text", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display-ios-rounded: "SF Pro Rounded", -apple-system, "SF Pro Text", "SF UI Text", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display-ios-rounded: "Inkverse", "SF Pro Rounded", -apple-system, "SF Pro Text", "SF UI Text", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ink: "Inkverse";
   --palette-white: #fff;
   --k-device-pixel-ratio: 2;
   --body-padding: 16px;
@@ -2672,8 +2703,10 @@ body {
   margin: 15px 15px 0 auto;
 }
 ._modal_rnk1e_41 {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(48px);
+  background: url(/clicker/vibin/robot-bg.png) no-repeat center center / cover;
+  background-size: 100% 100%;
+  /* background: rgba(255, 255, 255, 0.12); */
+  /* backdrop-filter: blur(48px); */
   -webkit-backdrop-filter: blur(48px);
   color: #fff;
   padding-bottom: 16px;
@@ -3677,6 +3710,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   display: flex;
   align-items: center;
   gap: 6px;
+  letter-spacing: 1px;
 }
 ._leagueName_xg9t0_45 {
   font-size: 15px;
@@ -4415,14 +4449,17 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   display: flex;
   align-items: center;
   width: 50%;
-  border-radius: 16px;
-  background-color: var(--color-bg-fifth);
+  /* border-radius: 16px; */
+  /* background-color: var(--color-bg-fifth); */
   flex-grow: 1;
+  background: url(/clicker/vibin/boost-bg.png) no-repeat center center / cover;
+  background-size: 100% 100%;
 }
 ._bodyWrap_e8sye_10 {
   flex-grow: 1;
 }
 ._title_e8sye_14 {
+  color:  #fff;
   font-size: 17px;
   line-height: 22px;
   margin-bottom: 2px;
@@ -4433,6 +4470,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   line-height: 18px;
   color: #ffffff4d;
   white-space: nowrap;
+  color: #fff;
 }
 ._icon_e8sye_28 {
   font-size: 30px;
@@ -4454,6 +4492,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: 2px;
 }
 ._price_1qnug_1:after {
   margin-left: 4px;
@@ -4463,9 +4502,9 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   width: 16px;
   min-width: 16px;
   height: 16px;
-  background: url(https://yescoin.space/clicker/moneta-small.png) center center/contain;
-  border-radius: 50%;
-  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 1);
+  background: url(../clicker/vibin/coin.png) center center/contain;
+  /* border-radius: 50%; */
+  /* box-shadow: 0 0 5px 2px rgba(255, 255, 255, 1); */
 }
 ._priceWrap_1qnug_19 {
   display: flex;
@@ -4630,12 +4669,13 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-display-ios-rounded);
+  font-family: 'Inkverse';
   text-align: center;
   font-variant-numeric: lining-nums tabular-nums;
   font-style: normal;
 }
 ._scoreIcon_55nwt_10 {
+  display: none;
   margin-right: 12px;
   width: 40px;
   height: 40px;
@@ -4659,6 +4699,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   margin-right: 8px;
 }
 ._size-48_55nwt_33 {
+  letter-spacing: 3px;
   font-size: 48px;
   line-height: 64px;
   font-weight: 800;
@@ -4691,13 +4732,13 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   padding-top: 4px;
 }
 ._scoreCurrent_do4sl_30 {
-  color: #fff;
+  color: #000;
   text-align: center;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: -0.078px;
+  letter-spacing: 2px;
   text-shadow: 1px 1px 2px rgba(181, 103, 12, 0.25);
   margin-bottom: 5px;
 }
@@ -4710,12 +4751,12 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   letter-spacing: -0.078px;
 }
 ._scoreLimit_do4sl_49 {
-  color: #ffffff80;
+  color: #000;
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: -0.078px;
+  letter-spacing: 1px;
 }
 ._scoreInner_do4sl_57 {
   line-height: 16px;
@@ -4731,7 +4772,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   width: 40px;
   height: 40px;
   margin: 3px;
-  background-image: url(https://yescoin.space/clicker/coin-icon.png);
+  background-image: url(/clicker/coin-icon.png);
 }
 ._bar_do4sl_73 {
   border-radius: 20px;
@@ -4741,11 +4782,12 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   overflow: hidden;
 }
 ._buttonGroup_do4sl_81 {
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.3);
-  width: 222px;
+  width: 250px;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
+  background-image: url(/clicker/vibin/menu-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 ._button_do4sl_81 {
   padding: 12px 0;
@@ -4753,7 +4795,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 74px;
+  width: 90px;
   min-width: 74px;
   position: relative;
   user-select: none;
@@ -4778,8 +4820,9 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   display: none;
 }
 ._button_do4sl_81 ._icon_do4sl_118 {
-  height: 24px;
-  margin-bottom: 6px;
+  /* position: relative; */
+  height: 30px;
+  margin-bottom: 16px;
   font-size: 24px;
   font-weight: 590;
   line-height: 24px;
@@ -4787,27 +4830,31 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   text-shadow: 1px 1px 2px rgba(181, 103, 12, 0.25), 0.5px 0.5px 0 rgba(0, 0, 0, 0.04);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_126 {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-size: 24px;
-  background-image: url(https://yescoin.space/clicker/drunk-face.png);
+  width: 38px;
+  height: 45px;
+  background-image: url(/clicker/vibin/drunk-face.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(-10px);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_127 {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-size: 24px;
-  background-image: url(https://yescoin.space/clicker/earn-min.png);
+  width: 54px;
+  height: 33px;
+  background-image: url(/clicker/earn-min.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(-5px);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_128 {
-  width: 24px;
+  width: 52px;
   height: 24px;
-  border-radius: 50%;
-  background-size: 24px;
-  background-image: url(https://yescoin.space/clicker/powerup-min.png);
+  background-image: url(/clicker/powerup-min.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(-5px);
 }
 ._button_do4sl_81 ._text_do4sl_134 {
+  letter-spacing: 1px;
   font-size: 12px;
   font-weight: 510;
   line-height: 12px;
@@ -5348,12 +5395,13 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   }
 }
 ._page_rq9m2_12 {
-  color: #fff;
+  color: #000;
   flex-direction: column;
   height: 100vh;
   position: relative;
   display: flex;
   background: #000;
+  background: url(/clicker/vibin/main-bg3.png) no-repeat center center / cover #000;
 }
 ._pageInner_rq9m2_22 {
   position: relative;
@@ -5530,12 +5578,13 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   }
 }
 ._page_ofiuy_12 {
-  color: #fff;
+  color: #000;
   flex-direction: column;
   height: 100vh;
   position: relative;
   display: flex;
   background: #000;
+  background: url(/clicker/vibin/main-bg4.png) no-repeat center center / cover #000;
 }
 ._pageInner_ofiuy_22 {
   position: relative;
@@ -5599,18 +5648,19 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: 2px;
 }
 ._priceAfter_ofiuy_84:after {
   margin-left: 4px;
   margin-right: 6px;
   content: "";
   display: block;
-  width: 16px;
-  min-width: 16px;
+  width: 20px;
+  min-width: 20px;
   height: 16px;
-  background: url(https://yescoin.space/clicker/moneta-small.png) center center/contain;
+  background: url(../clicker/vibin/coin.png) center center/contain;
   border-radius: 50%;
-  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 1);
+  /* box-shadow: 0 0 5px 2px rgba(255, 255, 255, 1); */
 }
 ._priceAfterWrap_ofiuy_102 {
   display: flex;
@@ -5715,6 +5765,7 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   height: 100vh;
   padding-top: 40px;
   background: #000;
+  background: url(/clicker/vibin/main-bg2.png) no-repeat center center / cover #000;
 }
 ._pageInner_ygi9q_21 {
   display: flex;
@@ -5769,6 +5820,8 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.12);
   padding: 8px 0;
+  background: url(/clicker/vibin/list-bg.png) no-repeat center center / cover;
+  background-size: 100% 100%;
 }
 ._text_ygi9q_80 {
   display: flex;
@@ -5817,8 +5870,12 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   padding: 30px 0 20px;
 }
 ._placeholderEmoji_ygi9q_131 {
-  font-size: 112px;
+  /* font-size: 100px; */
+  width: 133px;
+  height: 150px;
   line-height: normal;
+  content: "";
+  background: url(/clicker/vibin/drunk-face.png) no-repeat center center / cover;
 }
 ._title_1fzam_1 {
   font-size: 28px;
@@ -6249,11 +6306,11 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   }
 }
 ._page_1vpj3_12 {
-  color: #fff;
+  color: #000;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: url(https://yescoin.space/clicker/main_bg.png) no-repeat center center/cover #000;
+  background: url(/clicker/vibin/main-bg1.png) no-repeat center center/cover #000;
   gap: 20px;
   padding-top: 16px;
   padding-bottom: 20px;
@@ -6489,7 +6546,7 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
   padding: 16px;
   color: #ffffff80;
   font-variant-numeric: lining-nums tabular-nums;
-  font-family: SF Mono, monospace;
+  font-family: Inkverse, monospace;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;

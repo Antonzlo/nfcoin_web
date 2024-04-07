@@ -2761,7 +2761,7 @@ const useBoostStore = create( ( e, t ) => ( {
           const s = await checkTurboApi();
           if( s != null && s.turbo) document.multipleImgSrc = s.multiple > 0
             ? `/clicker/head-good-${Math.round( Math.random() ) + 1}.png`
-            : '/clicker/head-bad.png';
+            : `/clicker/head-bad-${Math.round( Math.random() ) + 1}.png`;
           s != null && s.turbo && setProf( { turboGift: !0, turboGiftExpire: Date.now() + 7e3 } );
         } catch ( s ) {
           console.error( s );
@@ -2812,7 +2812,9 @@ const useBoostStore = create( ( e, t ) => ( {
       id: 6,
       title: "Turbo",
       description: jsxs( Fragment, { children: [ "Get a Turbo boost now.", jsx( "br", {} ), " Be ready to catch the rocket!" ] } ),
-      icon: "📈",
+      // icon: "📈",
+      icon: "/clicker/vibin/kazik.png",
+      iconType: "img",
       type: "oneTurbo",
       max: 3,
       completions: 0,
@@ -2823,7 +2825,7 @@ const useBoostStore = create( ( e, t ) => ( {
       title: "Full Solana",
       description: jsxs( Fragment, { children: [ "Recharge your energy to the limit ", jsx( "br", {} ), "and do another round of mining" ] } ),
       // icon: "⚡️",
-      icon: "https://yescoin.space/clicker/coin-icon.png",
+      icon: "/clicker/coin-icon.png",
       iconType: "img",
       type: "fullEnergy",
       max: 3,
@@ -2864,8 +2866,8 @@ const useBoostStore = create( ( e, t ) => ( {
     // { id: 7, title: "Invite 10 frens", icon: "😸", type: "10Referral", coins: 5e4, isCompleted: !0 },
     // { id: 6, title: "Invite 5 frens", icon: "😸", type: "5Referral", coins: 25e3, isCompleted: !0 },
     // { id: 5, title: "Invite 1 frens", icon: "😸", type: "1Referral", coins: 5e3, isCompleted: !0 },
-    { id: 4, title: "Earn 100 DoNotCoin", icon: "😸", type: "100Clicks", coins: 200, isCompleted: !1 },
-    { id: 3, title: "Earn 1000 DoNotCoin", icon: "😸", type: "1000Clicks", coins: 2000, isCompleted: !1 },
+    { id: 4, title: "Solana saga holder", icon: "😸", type: "100Clicks", coins: 500000, isCompleted: !1, yos: !0 },
+    { id: 3, title: "Earn 1000 Points", icon: "😸", type: "1000Clicks", coins: 2000, isCompleted: !1 },
   ],
   specialTasksData = [
     {
@@ -4819,10 +4821,10 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
       button: "Погнали",
     },
     tr: {
-      oneTitle: "DoNotCoin kazanmak için dokun",
+      oneTitle: "NormieCoin kazanmak için dokun",
       oneDescr: "Evet, bu kadar kolay",
       twoTitle: "Takviyelerini Yükselt",
-      twoDescr: "Görevler için DoNotCoin kazan",
+      twoDescr: "Görevler için NormieCoin kazan",
       threeTitle: "Zirveye tırman",
       threeDescr: "Diamond Ligine git",
       fourTitle: "Ekibe Katıl!",
@@ -4832,10 +4834,10 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
       button: "Oyna",
     },
     fr: {
-      oneTitle: "Appuie pour gagner des DoNotCoin",
+      oneTitle: "Appuie pour gagner des NormieCoin",
       oneDescr: "Oui, c'est facile",
       twoTitle: "Augmente tes Boosts",
-      twoDescr: "Et complète des tâches (pour gagner des DoNotCoin)",
+      twoDescr: "Et complète des tâches (pour gagner des NormieCoin)",
       threeTitle: "Grimpe au sommet",
       threeDescr: "Vise la league de Diamond",
       fourTitle: "Rejoins une équipe!",
@@ -5024,6 +5026,7 @@ const root$4 = "_root_do4sl_1",
   buttonGroup = "_buttonGroup_do4sl_81",
   button$1 = "_button_do4sl_81",
   icon$1 = "_icon_do4sl_118",
+  iconDrunk = "_iconCoin_do4sl_126",
   iconEarn = "_iconCoin_do4sl_127",
   iconPowerUp = "_iconCoin_do4sl_128",
   text$1 = "_text_do4sl_134",
@@ -5041,6 +5044,7 @@ const root$4 = "_root_do4sl_1",
     buttonGroup,
     button: button$1,
     icon: icon$1,
+    iconDrunk,
     iconEarn,
     iconPowerUp,
     text: text$1,
@@ -5228,7 +5232,7 @@ const root$3 = "_root_9azk3_2",
                         this.ctx = options.ctx;
                         
                         this.image = options.image;
-                        this.imageStars = options.imageStars;
+                        this.imageHappy = options.imageHappy;
                         this.imageAngry = options.imageAngry;
                         
                         this.frameIndex = 0;
@@ -5270,7 +5274,7 @@ const root$3 = "_root_9azk3_2",
                         if (!this.mlty) {
                           img = this.image;
                         } else if (this.mlty > 0) {
-                          img = this.image;
+                          img = this.imageHappy;
                         } else {
                           img = this.imageAngry;
                         }
@@ -5288,21 +5292,6 @@ const root$3 = "_root_9azk3_2",
                           this.height
                         )
                         
-                        
-                        if ( this.ticksPerFrame !== 0 && (this.mlty > 0 || !this.mlty)) {
-                          const starSize = 30 - this.ticksPerFrame * 6;
-                          this.ctx.drawImage(
-                            this.imageStars,
-                            this.frameIndex * this.width / this.numberOfFrames,
-                            0,
-                            this.width / this.numberOfFrames,
-                            this.height,
-                            -starSize,
-                            -starSize,
-                            this.width / this.numberOfFrames + starSize * 2,
-                            this.height + starSize * 2
-                          )
-                        }
                       }
                       
                       start() {
@@ -5372,23 +5361,24 @@ const root$3 = "_root_9azk3_2",
                     if (!notcoin.getAttribute('listener')) {
                       
                       let canvas = document.querySelector( '.canvas_jasdeq' );
-                      canvas.width = 6000;
-                      canvas.height = 250;
-                      let happyImage = document.createElement( 'img' );
-                      let starsImage = document.createElement( 'img' );
+                      canvas.width = 3500;
+                      canvas.height = 350;
+                      let imageHappy = document.createElement( 'img' );
+                      let normImage = document.createElement( 'img' );
                       let angryImage = document.createElement( 'img' );
                       
-                      happyImage.src = '/clicker/pepa-happy.png';
-                      starsImage.src = '/clicker/eyes.png';
-                      angryImage.src = '/clicker/pepa-angry.png';
+                      imageHappy.src = '/clicker/vibin/cu2.png';
+                      normImage.src = '/clicker/vibin/cs.png';
+                      // starsImage.src = '/clicker/eyes.png';
+                      angryImage.src = '/clicker/vibin/cd.png';
                       let sprite = new Sprite( {
                         ctx: canvas.getContext( '2d' ),
-                        image: happyImage,
-                        imageStars: starsImage,
+                        image: normImage,
+                        imageHappy: imageHappy,
                         imageAngry: angryImage,
-                        width: 6000,
-                        height: 250,
-                        numberOfFrames: 24,
+                        width: 3500,
+                        height: 350,
+                        numberOfFrames: 10,
                         ticksPerFrame: 0,
                         mlty: mlty,
                       } )
@@ -5453,10 +5443,6 @@ const root$3 = "_root_9azk3_2",
                         } )
                       ],
                     } ),
-                    jsx("button", {
-                      className: "canvas-btn_djhfsdj",
-                      children: "BUY",
-                    })
                   ],
                 } ),
               } ),
@@ -5490,7 +5476,7 @@ const root$3 = "_root_9azk3_2",
             children: jsxs( "div", {
               className: styles$o.cooldownContainer,
               children: [
-                jsx( "div", { className: styles$o.cooldownNumber, children: cooldown || jsx( "small", { children: "DONOT" } ) } ),
+                jsx( "div", { className: styles$o.cooldownNumber, children: cooldown || jsx( "small", { children: "Normie" } ) } ),
                 jsx( "svg", { className: styles$o.cooldown, children: jsx( "circle", { className: styles$o.cooldownCircle, r: "140", cx: "150", cy: "150" } ) } ),
               ],
             } ),
@@ -5930,7 +5916,7 @@ const root$3 = "_root_9azk3_2",
                     padding: "0-0-16",
                     column: !0,
                     align: "center",
-                    children: jsx( Image, { src: "https://yescoin.space/clicker/moneta-small.png", size: "100" } ),
+                    children: jsx( Image, { src: "/clicker/vibin/cat-face.png", size: "100" } ),
                   } ),
                   jsx( "div", { className: styles$h.title, children: "Earn more coins" } ),
                 ],
@@ -6272,11 +6258,11 @@ function ClickerFrensPage() {
                 column: !0,
                 spacingChild: "12",
                 children: [
-                  settats !== null && settats.amount > 0 ? jsxs( Content, { justify: "center", children: [ settats.amount, " Fren", settats.amount > 1 ? "s" : "" ] } ) : "Fren zone",
+                  settats !== null && settats.amount > 0 ? jsxs( Content, { justify: "center", children: [ settats.amount, " Fren", settats.amount > 1 ? "s" : "" ] } ) : "Normies",
                 ],
               } ),
             } ),
-            jsx( Text, { type: "title-2", margin: "24-0-12-0", semibold: !0, children: "Frens List" } ),
+            jsx( Text, { type: "title-2", margin: "24-0-12-0", semibold: !0, children: "Normies List" } ),
             jsxs( Content, {
               className: styles$f.frensList,
               column: !0,
@@ -6290,8 +6276,8 @@ function ClickerFrensPage() {
                     column: !0,
                     fadeIn: !0,
                     children: [
-                      jsx( "p", { className: styles$f.placeholderEmoji, children: "🤝" } ),
-                      jsx( Content, { padding: "12-0-24", children: jsx( Text, { type: "subheadline-1", color: "tertiary", center: !0, children: "No frens yet" } ) } ),
+                      jsx( "p", { className: styles$f.placeholderEmoji, children: "" } ),
+                      jsx( Content, { padding: "12-0-24", children: jsx( Text, { type: "subheadline-1", color: "tertiary", center: !0, children: "You have no normies" } ) } ),
                     ],
                   } )
                   : null,
@@ -6311,7 +6297,7 @@ function ClickerFrensPage() {
                   : null,
               ],
             } ),
-            jsx( Button$1, { type: "orange", onClick: inviteFrenViaBotStartRef, fixedBottom: !0, children: "Invite a fren" } ),
+            jsx( Button$1, { type: "orange", onClick: inviteFrenViaBotStartRef, fixedBottom: !0, children: "Onboard a normie" } ),
           ],
         } )
         : null,
