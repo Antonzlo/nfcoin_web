@@ -2862,12 +2862,22 @@ const useBoostStore = create( ( e, t ) => ( {
     },
   } ) ),
   onboardingTasksData = [
-    // { id: 8, title: "Invite 20 frens", icon: "😸", type: "20Referral", coins: 1e5, isCompleted: !0 },
-    // { id: 7, title: "Invite 10 frens", icon: "😸", type: "10Referral", coins: 5e4, isCompleted: !0 },
-    // { id: 6, title: "Invite 5 frens", icon: "😸", type: "5Referral", coins: 25e3, isCompleted: !0 },
-    // { id: 5, title: "Invite 1 frens", icon: "😸", type: "1Referral", coins: 5e3, isCompleted: !0 },
-    { id: 4, title: "Solana saga holder", icon: "😸", type: "100Clicks", coins: 500000, isCompleted: !1, yos: !0 },
-    { id: 3, title: "Earn 1000 Points", icon: "😸", type: "1000Clicks", coins: 2000, isCompleted: !1 },
+    { id: 4, title: "Solana saga holder", icon: "🙌", type: "100Clicks", coins: 500000, isCompleted: !1, yos: !0 },
+    { id: 3, title: "Earn 1000 Points", icon: "🙌", type: "1000Clicks", coins: 2000, isCompleted: !1 },
+  ],
+  normanTasksData = [
+    { id: 8, title: "Follow @norman TG", icon: "❤️", type: "norman4", coins: 100000, isCompleted: !1 },
+    { id: 7, title: "Follow @norman twitter", icon: "❤️", type: "norman3", coins: 100000, isCompleted: !1 },
+    { id: 14, title: "Add (vibing, chilling) to your Twitter nickname", icon: "❤️", type: "norman2", coins: 20000, isCompleted: !1},
+    { id: 13, title: "Add (vibing, chilling) to your Telegram name", icon: "❤️", type: "norman1", coins: 20000, isCompleted: !1 },
+  ],
+  contributersTasksData = [
+    { id: 11, title: "Follow @0xsmoky on Twitter", icon: "🤗", type: "contributes3", coins: 100000, isCompleted: !1 },
+    { id: 10, title: "Follow @gotbit on Twitter", icon: "🤗", type: "contributes2", coins: 100000, isCompleted: !1, },
+    { id: 9, title: "Follow @alexandiunin on Twitter", icon: "🤗", type: "contributes1", coins: 20000, isCompleted: !1 },
+  ],
+  dailyEarnTasksData = [
+    { id: 12, title: "Trojan enjoyoor", icon: "🗓️", type: "daily-earn", coins: 150000, isCompleted: !1 },
   ],
   specialTasksData = [
     {
@@ -2888,6 +2898,9 @@ const useBoostStore = create( ( e, t ) => ( {
   useTaskStore = create( ( e, t ) => ( {
     isLoaded: !1,
     dailyTasks: [],
+    normanTasks: [],
+    contributersTasks: [],
+    dailyEarnTasks: [],
     tasks: [],
     leagueTasks: [],
     specialTasks: [],
@@ -2896,11 +2909,17 @@ const useBoostStore = create( ( e, t ) => ( {
     fetchTasks: async () => {
       const { ok: s, data: data } = await fetchAllCompletedTasksApi(),
         o = onboardingTasksData.map( ( x ) => ( data.find( ( d ) => d.task.type === x.type ) ? { ...x, isCompleted: 1 } : x ) ),
+        o2 = normanTasksData.map( ( x ) => ( data.find( ( d ) => d.task.type === x.type ) ? { ...x, isCompleted: 1 } : x ) ),
+        o3 = contributersTasksData.map( ( x ) => ( data.find( ( d ) => d.task.type === x.type ) ? { ...x, isCompleted: 1 } : x ) ),
+        o4 = dailyEarnTasksData.map( ( x ) => ( data.find( ( d ) => d.task.type === x.type ) ? { ...x, isCompleted: 1 } : x ) ),
         r = leagueTasksData.map( ( l ) => ( data.find( ( d ) => d.task.type === l.type ) ? { ...l, isCompleted: 1 } : l ) ),
         a = specialTasksData,
         c = partnerTasksData,
         i = dailyTasksData.map( ( l ) => ( { ...l, completions: data.filter( ( d ) => d.taskId === l.id ).length } ) );
-      e( { isLoaded: !0, dailyTasks: i, onboardingTasks: o, partnerTasks: c, specialTasks: a, leagueTasks: r } );
+      console.log(o2);
+      console.log(o3);
+      console.log(o4);
+      e( { isLoaded: !0, dailyTasks: i, onboardingTasks: o, normanTasks: o2, contributersTasks: o3, dailyEarnTasks: o4, partnerTasks: c, specialTasks: a, leagueTasks: r } );
     },
     completeTask: async ( s ) => await completeTaskApi( s ),
   } ) ),
@@ -3416,7 +3435,7 @@ const getBoostDetails = ( e ) => ( boostData[ e ] ? boostData[ e ] : { title: "B
         jsx( "img", { src: "/clicker/penis.png", width: 220, className: styles$R.qrCodeImg, alt: "NFC bot QR" } ),
       ],
     } ),
-  root$b = "_root_1unia_1",
+  root$b = "_root_1unia_1 robot-btn-bg",
   fullwidth = "_fullwidth_1unia_21",
   typeBlue = "_typeBlue_1unia_25",
   typeOrange = "_typeOrange_1unia_29",
@@ -5756,7 +5775,7 @@ const root$3 = "_root_9azk3_2",
               jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-3", weight: "semibold", children: "Free daily boosters" } ) } ),
               jsx( Content, { padding: "0-0-14", className: styles$j.taskCarouselWrap, children: jsx( TaskCarousel, { onSuccess: p } ) } ),
               jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "Boosters" } ) } ),
-              jsx( Content, { padding: "0-0-24", className: styles$j.taskCarouselWrap, children: jsx( BoostCarousel, { onSuccess: p } ) } ),
+              jsx( Content, { padding: "0-0-24", className: `${styles$j.taskCarouselWrap} list-big-bg`, children: jsx( BoostCarousel, { onSuccess: p } ) } ),
               jsxs( Text, {
                 type: "footnote",
                 margin: "0-0-12-0",
@@ -5853,12 +5872,15 @@ const root$3 = "_root_9azk3_2",
       { addToast: o, hideToasts: r } = useToast(),
       { isLoaded: a, fetchBoosts: boostsGet } = useBoostStore(),
       { userProfile: i, score: userBalance, fetchClickerUserProfile: d } = useClickerStore(),
-      { onboardingTasks: onbrTasks, fetchTasks: tasksGet, leagueTasks: m, specialTasks: u, partnerTasks: y, isLoaded: f } = useTaskStore();
+      { onboardingTasks: onbrTasks, normanTasks: normanTasks, contributersTasks: contrTasks, dailyEarnTasks: dailyearnTasks, fetchTasks: tasksGet, leagueTasks: m, specialTasks: u, partnerTasks: y, isLoaded: f } = useTaskStore();
     reactExports.useEffect( () => {
       i && ( boostsGet(), tasksGet() );
     }, [ i ] );
     const g = i && a && f,
       onboarding = onbrTasks.sort( ( a, b ) => ( a.id < b.id ? 1 : -1 ) ).sort( ( x ) => ( x.isCompleted ? 1 : -1 ) ),
+      onboarding2 = normanTasks.sort( ( a, b ) => ( a.id < b.id ? 1 : -1 ) ).sort( ( x ) => ( x.isCompleted ? 1 : -1 ) ),
+      onboarding3 = contrTasks.sort( ( a, b ) => ( a.id < b.id ? 1 : -1 ) ).sort( ( x ) => ( x.isCompleted ? 1 : -1 ) ),
+      onboarding4 = dailyearnTasks.sort( ( a, b ) => ( a.id < b.id ? 1 : -1 ) ).sort( ( x ) => ( x.isCompleted ? 1 : -1 ) ),
       h = i != null && i.clickerBoostXProfile ? i.clickerBoostXProfile : [],
       $ = getUserLang( [ "fa", "ru", "id", "pl", "az", "kk", "tg", "tk", "uz", "uk", "ua" ] ),
       C = reactExports.useMemo( () => sortPartners( y, h, $ ), [ y, h, $ ] ),
@@ -5867,6 +5889,9 @@ const root$3 = "_root_9azk3_2",
     x && v.push( ...x );
     const special = reactExports.useMemo( () => sortPartners( v, h, $ ), [ u, m, h, $ ] ),
       L = onboarding.filter( ( w ) => !w.isCompleted ).length === 0,
+      L2 = onboarding2.filter( ( w ) => !w.isCompleted ).length === 0,
+      L3 = onboarding3.filter( ( w ) => !w.isCompleted ).length === 0,
+      L4 = onboarding4.filter( ( w ) => !w.isCompleted ).length === 0,
       B = special.filter( ( w ) => !w.isCompleted ).length === 0,
       [ E, N ] = reactExports.useState( null ),
       [ S, P ] = reactExports.useState( null );
@@ -5875,7 +5900,7 @@ const root$3 = "_root_9azk3_2",
         const { ok: w, data: q } = await checkCompletionTaskApi( S.challengeId, i == null ? void 0 : i.user.telegramId );
         if ( w && q && q.isCompleted ) {
           const M = await claimPartnerReward( S.id );
-          P( null ), M.ok && ( await d(), r(), o( { message: `Task is done +${beautifyMoney$1( String( S.coins ) )} NFCoin`, type: "success" } ) );
+          P( null ), M.ok && ( await d(), r(), o( { message: `Task is done +${beautifyMoney$1( String( S.coins ) )} Points`, type: "success" } ) );
         }
       }
     }, E ),
@@ -5887,10 +5912,25 @@ const root$3 = "_root_9azk3_2",
       },
       T = jsxs( Fragment, {
         children: [
-          jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "Onboarding" } ) } ),
+          jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "welcome bonus" } ) } ),
           jsx( Content, {
             padding: "0-0-24",
-            children: jsx( List, { type: "inset", children: onboarding.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
+            children: jsx( List, { type: "inset", className: "list-sm-bg", children: onboarding.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
+          } ),
+          jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "Norman" } ) } ),
+          jsx( Content, {
+            padding: "0-0-24",
+            children: jsx( List, { type: "inset", className: "list-big-bg", children: onboarding2.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
+          } ),
+          jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "Early Contributers" } ) } ),
+          jsx( Content, {
+            padding: "0-0-24",
+            children: jsx( List, { type: "inset", className: "list-big-bg", children: onboarding3.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
+          } ),
+          jsx( Content, { column: !0, padding: "16-0-12", spacingChild: "2", children: jsx( Text, { type: "title-2", weight: "semibold", children: "Daily tasks" } ) } ),
+          jsx( Content, {
+            padding: "0-0-24",
+            children: jsx( List, { type: "inset", className: "list-sm-bg", children: onboarding4.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
           } ),
         ],
       } ),
@@ -5926,6 +5966,7 @@ const root$3 = "_root_9azk3_2",
                 column: !0,
                 children: jsx( List, {
                   type: "inset",
+                  className: "list-sm-bg",
                   children: jsx( ListItem, {
                     onClick: () => t( "/clicker/frens" ),
                     divider: !1,
@@ -7101,10 +7142,10 @@ const page$6 = "_page_1vpj3_12",
   subtitle$1 = "_subtitle_1tybo_10",
   image = "_image_1tybo_18",
   backButton = "_backButton_1tybo_23",
-  modal = "_modal_1tybo_39",
+  modal = "_modal_1tybo_39 robot-bg",
   body = "_body_1tybo_44",
   backdrop = "_backdrop_1tybo_50",
-  robotSays = "_robotSays_1tybo_54",
+  robotSays = "_robotSays_1tybo_54 robot-text-bg",
   score$1 = "_score_1tybo_69",
   scoreSkeleton = "_scoreSkeleton_1tybo_77",
   styles$a = { title: title$4, subtitle: subtitle$1, image, backButton, modal, body, backdrop, robotSays, score: score$1, scoreSkeleton },
@@ -7237,7 +7278,7 @@ const page$6 = "_page_1vpj3_12",
         children: jsxs( "div", {
           className: styles$a.body,
           children: [
-            jsx( "div", { className: styles$a.image, children: "🤖" } ),
+            jsx( "div", { className: styles$a.image, children: jsx('img', { src: "/clicker/vibin/robot.png" } ) } ),
             jsxs( "div", {
               className: styles$a.robotSays,
               children: [
