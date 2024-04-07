@@ -4772,6 +4772,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   background: rgba(255, 255, 255, 0.16);
   position: absolute;
   right: 0;
+  opacity: 0;
 }
 ._button_do4sl_81:last-child:after {
   display: none;
@@ -4784,6 +4785,13 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   line-height: 24px;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(181, 103, 12, 0.25), 0.5px 0.5px 0 rgba(0, 0, 0, 0.04);
+}
+._button_do4sl_81 ._iconCoin_do4sl_126 {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-size: 24px;
+  background-image: url(https://yescoin.space/clicker/drunk-face.png);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_127 {
   width: 24px;

@@ -5026,6 +5026,7 @@ const root$4 = "_root_do4sl_1",
   icon$1 = "_icon_do4sl_118",
   iconEarn = "_iconCoin_do4sl_127",
   iconPowerUp = "_iconCoin_do4sl_128",
+  iconDrunk = "_iconCoin_do4sl_126",
   text$1 = "_text_do4sl_134",
   styles$p = {
     root: root$4,
@@ -5043,6 +5044,7 @@ const root$4 = "_root_do4sl_1",
     icon: icon$1,
     iconEarn,
     iconPowerUp,
+    iconDrunk,
     text: text$1,
   };
 function Progress( { current: e, profile: t } ) {
@@ -5078,8 +5080,8 @@ function Progress( { current: e, profile: t } ) {
                 className: styles$p.button,
                 onClick: () => s( "/clicker/frens" ),
                 children: [
-                  jsx( "div", { className: styles$p.icon, children: jsx( "div", { className: styles$p.icon, children: "🤝" } ) } ),
-                  jsx( "div", { className: styles$p.text, children: "Frens" } ),
+                  jsx( "div", { className: styles$p.icon, children: jsx( "div", { className: styles$p.iconDrunk } ) } ),
+                  jsx( "div", { className: styles$p.text, children: "Normies" } ),
                 ],
               } ),
               jsxs( "div", {
