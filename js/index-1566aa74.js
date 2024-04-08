@@ -2862,22 +2862,22 @@ const useBoostStore = create( ( e, t ) => ( {
     },
   } ) ),
   onboardingTasksData = [
-    { id: 4, title: "Solana saga holder", icon: "🙌", type: "100Clicks", coins: 500000, isCompleted: !1, yos: !0 },
-    { id: 3, title: "Earn 1000 Points", icon: "🙌", type: "1000Clicks", coins: 2000, isCompleted: !1 },
+    { id: 4, title: "Solana saga holder", icon: jsx("img", {src: "/clicker/vibin/yos.png",}), type: "100Clicks", coins: 500000, isCompleted: !1, yos: !0 },
+    { id: 3, title: "Earn 1000 Points", icon: jsx("img", {src: "/clicker/vibin/yos.png",}), type: "1000Clicks", coins: 2000, isCompleted: !1 },
   ],
   normanTasksData = [
-    { id: 8, title: "Follow @norman TG", icon: "❤️", type: "norman4", coins: 100000, isCompleted: !1 },
-    { id: 7, title: "Follow @norman twitter", icon: "❤️", type: "norman3", coins: 100000, isCompleted: !1 },
-    { id: 14, title: "Add (vibing, chilling) to your Twitter nickname", icon: "❤️", type: "norman2", coins: 20000, isCompleted: !1},
-    { id: 13, title: "Add (vibing, chilling) to your Telegram name", icon: "❤️", type: "norman1", coins: 20000, isCompleted: !1 },
+    { id: 8, title: "Follow @norman TG", icon: jsx("img", {src: "/clicker/vibin/heart.png",}), type: "norman4", coins: 100000, isCompleted: !1 },
+    { id: 7, title: "Follow @norman twitter", icon: jsx("img", {src: "/clicker/vibin/heart.png",}), type: "norman3", coins: 100000, isCompleted: !1 },
+    { id: 14, title: "Add (vibing, chilling) to your Twitter nickname", icon: jsx("img", {src: "/clicker/vibin/heart.png",}), type: "norman2", coins: 20000, isCompleted: !1},
+    { id: 13, title: "Add (vibing, chilling) to your Telegram name", icon: jsx("img", {src: "/clicker/vibin/heart.png",}), type: "norman1", coins: 20000, isCompleted: !1 },
   ],
   contributersTasksData = [
-    { id: 11, title: "Follow @0xsmoky on Twitter", icon: "🤗", type: "contributes3", coins: 100000, isCompleted: !1 },
-    { id: 10, title: "Follow @gotbit on Twitter", icon: "🤗", type: "contributes2", coins: 100000, isCompleted: !1, },
-    { id: 9, title: "Follow @alexandiunin on Twitter", icon: "🤗", type: "contributes1", coins: 20000, isCompleted: !1 },
+    { id: 11, title: "Follow @0xsmoky on Twitter", icon: jsx("img", {src: "/clicker/vibin/hug.png",}), type: "contributes3", coins: 100000, isCompleted: !1 },
+    { id: 10, title: "Follow @gotbit on Twitter", icon: jsx("img", {src: "/clicker/vibin/hug.png",}), type: "contributes2", coins: 100000, isCompleted: !1, },
+    { id: 9, title: "Follow @alexandiunin on Twitter", icon: jsx("img", {src: "/clicker/vibin/hug.png",}), type: "contributes1", coins: 20000, isCompleted: !1 },
   ],
   dailyEarnTasksData = [
-    { id: 12, title: "Trojan enjoyoor", icon: "🗓️", type: "daily-earn", coins: 150000, isCompleted: !1 },
+    { id: 12, title: "Trojan enjoyoor", icon: jsx("img", {src: "/clicker/vibin/calendar.png",}), type: "daily-earn", coins: 150000, isCompleted: !1 },
   ],
   specialTasksData = [
     {
@@ -3328,31 +3328,31 @@ const beautifyMoney$1 = ( e ) => new Intl.NumberFormat( "en-US" ).format( parseI
   },
   boostData = {
     multipleClicks: {
-      title: "Multitap",
+      title: "Private alpha KOLs",
       description: jsxs( Fragment, {
-        children: [ "Increase amount of DoNotCoin", jsx( "br", {} ), " you can earn per one tap.", jsx( "br", {} ), jsx( "br", {} ), " +1 per tap for each level." ],
+        children: [ "Increase amount of Points", jsx( "br", {} ), " you can earn per one tap.", jsx( "br", {} ), jsx( "br", {} ), " +1 per tap for each level." ],
       } ),
-      icon: "🗣️️",
+      icon: jsx("img", {src: "/clicker/vibin/oru.png",}),
     },
     increaseLimit: {
-      icon: "💳",
-      title: "Energy Limit",
+      icon: jsx("img", { src: "/clicker/vibin/coin-fall.png", }),
+      title: "Airdrop Farming",
       description: jsxs( Fragment, {
-        children: [ "Increase your energy limit,", jsx( "br", {} ), " so you can mine more per session.", jsx( "br", {} ), jsx( "br", {} ), "+500 DoNotCoin for each level." ],
+        children: [ "Increase your energy limit,", jsx( "br", {} ), " so you can mine more per session.", jsx( "br", {} ), jsx( "br", {} ), "+500 Points for each level." ],
       } ),
     },
     speedPerHour: {
-      title: "Recharging speed",
+      title: "Mom’s credit Card",
       description: jsxs( Fragment, {
         children: [ "Increase the energy recharging speed.", jsx( "br", {} ), jsx( "br", {} ), " +1 / sec for each level.", jsx( "br", {} ), "3 levels max limit." ],
       } ),
-      icon: "🤑",
+      icon: jsx("img", {src: "/clicker/vibin/card.png",}),
     },
     robot: {
-      title: "Tap bot",
+      title: "Sniper bot",
       description: jsxs( Fragment, {
         children: [
-          "Hi sir! I will earn DoNotCoin for you,",
+          "Hi sir! I will earn Points for you,",
           jsx( "br", {} ),
           "when you close the game.",
           jsx( "br", {} ),
@@ -3360,10 +3360,10 @@ const beautifyMoney$1 = ( e ) => new Intl.NumberFormat( "en-US" ).format( parseI
           "12 hours is my limit for auto-tap.",
           jsx( "br", {} ),
           jsx( "br", {} ),
-          "You need to claim DoNotCoin at least every 12 hour to empty my storage, so I can earn more for you.",
+          "You need to claim Points at least every 12 hour to empty my storage, so I can earn more for you.",
         ],
       } ),
-      icon: "🤖",
+      icon: jsx("img", {src: "/clicker/vibin/robot-min.png",}),
     },
   };
 var BoostStatusEnum = ( ( e ) => (
@@ -5030,7 +5030,7 @@ function Score( { score: e, size: t = 48, duration: s = 1 } ) {
   function r( a, c, i ) {
     return c + ( i - c ) * a;
   }
-  return jsxs( "div", { className: cn( styles$q.score, styles$q[ `size-${t}` ] ), children: [ jsx( "div", { className: styles$q.scoreIcon } ), beautifyMoney( String( n ) ) ] } );
+  return jsxs( "div", { onClick: () => {document.querySelector(".modal-custome").classList.add('modal-custome_visible')}, className: cn( styles$q.score, styles$q[ `size-${t}` ] ), children: [ jsx( "div", { className: styles$q.scoreIcon } ), beautifyMoney( String( n ) ) ] } );
 }
 const root$4 = "_root_do4sl_1",
   scoreBar = "_scoreBar_do4sl_18",
@@ -5220,11 +5220,12 @@ const root$3 = "_root_9azk3_2",
       };
     reactExports.useEffect( () => {
       setMlty(mty);
-      // if (document.pepaSprite) {
-      //   document.pepaSprite.mlty = mlty;
-      // }
-    }, [ mty ] )
-    ;
+    }, [ mty ] );
+    reactExports.useEffect( () => {
+      if (canIClickPlease) {
+        document.querySelector('.canvas_jasdeq').click();
+      }
+    }, [ canIClickPlease ] );
     if (document.pepaSprite) {
       document.pepaSprite.mlty = mty;
     }
@@ -5265,27 +5266,37 @@ const root$3 = "_root_9azk3_2",
                         this.clickTimeout = null;
                         
                         this.mlty = options.mlty;
+                        this.paused = false;
                         
                         this.loop = this.start();
                       }
                       
                       reset() {
-                        this.ticksPerFrame = 0;
+                        this.clickTimeout = setTimeout(() => {
+                          if (this.ticksPerFrame && this.ticksPerFrame < 10) {
+                            this.ticksPerFrame += 2.5;
+                          } else {
+                            // this.ticksPerFrame = 0;
+                            this.paused = true;
+                          }
+                        }, 500)
                       }
                       
                       update() {
-                        this.tickCount++;
-                        
-                        if ( this.tickCount > this.ticksPerFrame ) {
-                          //console.log( 'frame', this.tickCount );
-                          this.tickCount = 0;
+                        if ( this.ticksPerFrame !== 0  && !this.paused ||  this.frameIndex !== 0) {
+                          this.tickCount++;
                           
-                          if ( this.frameIndex < this.numberOfFrames - 1 ) {
-                            this.frameIndex++;
-                          } else {
-                            this.frameIndex = 0;
+                          if ( this.tickCount > this.ticksPerFrame ) {
+                            this.tickCount = 0;
+                            
+                            if ( this.frameIndex < this.numberOfFrames - 1 ) {
+                              this.frameIndex++;
+                            } else {
+                              this.frameIndex = 0;
+                            }
                           }
                         }
+                        
                       }
                       
                       render() {
@@ -5318,21 +5329,12 @@ const root$3 = "_root_9azk3_2",
                           this.update();
                           this.render();
                           
-                          if ( this.ticksPerFrame !== 0 ) {
-                            window.requestAnimationFrame( loop );
-                          }
+                          window.requestAnimationFrame( loop );
                         }
                         window.requestAnimationFrame( loop );
                         
                         document.querySelector( '._notcoin_9azk3_34' ).addEventListener( 'click', () => {
-                          if ( document.querySelector( '.canvas_jasdeq_bg' ) ) {
-                            document.querySelector( '.canvas_jasdeq_bg' ).classList.remove( 'canvas_jasdeq_bg' );
-                          }
-                          
-                        } );
-                        
-                        document.querySelector( '._notcoin_9azk3_34' ).addEventListener( 'click', () => {
-                          
+                          this.paused = false;
                           clearTimeout( this.clickTimeout );
                           this.clickTimeout = null;
                           
@@ -5349,12 +5351,12 @@ const root$3 = "_root_9azk3_2",
                           
                           if (this.mlty > 0) {
                             if (!boxCanvas.classList.contains('pepa-shaker_ajdkqt')) boxCanvas.classList.add('pepa-shaker_ajdkqt')
-                            this.ticksPerFrame = 1;
+                            this.ticksPerFrame = 5;
                             let candleHeight = candleBody.offsetHeight;
                             let stickHeight = stick.offsetHeight;
                             if (candleBody.offsetHeight < window.innerHeight) {
-                              candleHeight += 20;
-                              stickHeight += 20;
+                              candleHeight += 10;
+                              stickHeight += 10;
                               candleBody.style.height = `${ candleHeight.toString() }px`;
                               stick.style.height = `${ stickHeight.toString() }px`;
                             }
@@ -5388,7 +5390,6 @@ const root$3 = "_root_9azk3_2",
                       
                       imageHappy.src = '/clicker/vibin/cu2.png';
                       normImage.src = '/clicker/vibin/cs.png';
-                      // starsImage.src = '/clicker/eyes.png';
                       angryImage.src = '/clicker/vibin/cd.png';
                       let sprite = new Sprite( {
                         ctx: canvas.getContext( '2d' ),
@@ -5403,30 +5404,39 @@ const root$3 = "_root_9azk3_2",
                       } )
                       document.pepaSprite = sprite;
                       
-                      let candleHeight = 20;
+                      let candleHeight = 10;
                       
                       notcoin.setAttribute('listener', true)
                       notcoin.addEventListener( 'click', () => {
+                        const score = document.querySelector('._score_55nwt_1');
+                        const points = document.querySelectorAll('._clickAmount_9azk3_126');
                         sprite.mlty = mlty;
-                        if ( candleHeight < 300 && !sprite.godCandle) {
+                        if (sprite.mlty !== 0) {
+                          score.style.color = "#000";
                           candleHeight += 10;
-                          sprite.ticksPerFrame = Math.max( 1, sprite.ticksPerFrame - 1 );
+                          sprite.ticksPerFrame = Math.max( 3, sprite.ticksPerFrame - 1 );
+                          points.forEach((item) => item.style.color = "#000")
+                        } else {
+                          score.style.color = "#fff";
+                          points.forEach((item) => item.style.color = "#fff")
                         }
+                        
                         
                       } );
                       
-                      function convertRange( value, r1 = [10, 200], r2 = [5,1] ) {
+                      function convertRange( value, r1 = [10, 160], r2 = [10, 5] ) {
                         return ( value - r1[ 0 ] ) * ( r2[ 1 ] - r2[ 0 ] ) / ( r1[ 1 ] - r1[ 0 ] ) + r2[ 0 ];
                       }
                       
                       
                       setInterval( () => {
                         if (sprite.godCandle) {
-                          candleHeight = 200;
+                          candleHeight = 160;
                           return
                         }
                         candle.style.height = `${candleHeight.toString()}px`;
-                        if(sprite.ticksPerFrame) sprite.ticksPerFrame = Math.max( 1, convertRange(candleHeight) );
+                        
+                        if(sprite.ticksPerFrame && candleHeight > 10) sprite.ticksPerFrame = Math.max( 1, convertRange(candleHeight) );
                         if (candleHeight > 300) {
                           candleHeight -= 50;
                         } else if ( candleHeight > 200) {
@@ -5434,9 +5444,10 @@ const root$3 = "_root_9azk3_2",
                         } else if ( candleHeight > 100 ) {
                           candleHeight -= 20;
                         } else {
-                          if ( candleHeight > 20 ) {
+                          if ( candleHeight >= 20 ) {
                             candleHeight -= 10;
-                          } else sprite.reset();
+                          }
+                          sprite.reset();
                         }
                         
                         
@@ -5447,9 +5458,14 @@ const root$3 = "_root_9azk3_2",
                   children: [
                     jsx( "div", {
                       className: "box-canvas_gdahkd canvas_jasdeq_bg",
-                      children: jsx( "canvas", {
-                        className: styles$o.video,
-                      } ),
+                      children: [
+                        // jsx( "img", {
+                        //   src:
+                        // }),
+                        jsx( "canvas", {
+                          className: styles$o.video,
+                        } )
+                      ],
                     } ),
                     jsx( "div", {
                       className: "candle_asdfjh",
@@ -5659,7 +5675,7 @@ const root$3 = "_root_9azk3_2",
     let imgSrc =
       document.multipleImgSrc
         ? document.multipleImgSrc
-        : '/clicker/head-bad.png';
+        : '/clicker/head-good-1.png';
     return (
       reactExports.useEffect( () => {
         const i = randomNumber( 0, window.innerHeight - 100 ),
@@ -5932,6 +5948,14 @@ const root$3 = "_root_9azk3_2",
             padding: "0-0-24",
             children: jsx( List, { type: "inset", className: "list-sm-bg", children: onboarding4.map( ( x ) => jsx( TaskEarn, { task: x, userBoosts: [], userBalance: userBalance }, `onboarding-${x.id}` ) ) } ),
           } ),
+          jsxs( Text, {
+            type: "footnote",
+            margin: "0-0-12-0",
+            bold: !0,
+            center: !0,
+            className: styles$j.footnote,
+            children: [ "Built by", " ", jsx( "a", { href: "https://antonzlo.github.io", target: "_blank", style: { color: "#feb803" }, children: "Anton Zlobin" } ), " & ", jsx( "a", { href: "https://foxhustle.site", target: "_blank", style: { color: "#feb803" }, children: "FoxHustle" } ) ],
+          } ),
         ],
       } ),
       z = jsxs( Fragment, {} );
@@ -5977,7 +6001,7 @@ const root$3 = "_root_9azk3_2",
                       className: styles$h.priceAfterWrap,
                       children: [ jsx( "span", { className: styles$h.priceAfter, children: "+10K" } ), "" ],
                     } ),
-                    before: jsx( MediaIcon, { media: { type: "cover-emoji", value: '🤝', color: "pale-grey" }, imageSize: "72", size: "72", borderRadius: "12" } ),
+                    before: jsx( 'img', {src: "/clicker/vibin/deal.png", className: "icon-deal",} ),
                     large: !0,
                     ripple: !0,
                     chevron: !0,
@@ -7385,6 +7409,39 @@ function ClickerMainPage() {
       jsx( Notcoin, { canIClickPlease: okToClick, sleep: isSleep, funMode: isTurbo, clickValue: calculateClickValue( isTurbo, turboSettings, clickValue ), cooldown: cooldown, handleClick: I, multiple: turboSettings == null ? void 0 : turboSettings.multiple } ),
       !newbie && userProfile && jsx( Progress, { current: availableToClick, profile: userProfile } ),
       jsx( Robot, { isShown: showRobot, minedAmount: robotMined, setShow: setB, claimAction: claimRobot } ),
+      jsx( "div", {
+        className: "modal-custome",
+        children: jsxs( "div", {
+          className: "_contentInner_w3ao9_49 modal-custome-inner",
+          children: [
+            jsx( "div", {
+              className: "_cross_w3ao9_68 modal-cross",
+              onClick: () => {document.querySelector(".modal-custome").classList.remove('modal-custome_visible')},
+              children: jsx( "svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                children: jsx( "path", {
+                  fillRule: "evenodd",
+                  clipRule: "evenodd",
+                  d: "M4.36321 4.3637C4.71469 4.01223 5.28453 4.01223 5.63601 4.3637L11.9996 10.7273L18.3632 4.3637C18.7147 4.01223 19.2845 4.01223 19.636 4.3637C19.9875 4.71517 19.9875 5.28502 19.636 5.63649L13.2724 12.0001L19.636 18.3637C19.9875 18.7152 19.9875 19.285 19.636 19.6365C19.2845 19.988 18.7147 19.988 18.3632 19.6365L11.9996 13.2729L5.63601 19.6365C5.28453 19.988 4.71469 19.988 4.36321 19.6365C4.01174 19.285 4.01174 18.7152 4.36321 18.3637L10.7268 12.0001L4.36321 5.63649C4.01174 5.28502 4.01174 4.71517 4.36321 4.3637Z",
+                  fill: "white",
+                } ),
+              } ),
+            } ),
+            jsx( "div", { className: "_image_rnk1e_18 modal-img", children: jsx('img', { src: "/clicker/vibin/drunk-face.png" } ) } ),
+            jsxs( "div", {
+              className: "modal-description",
+              children: [
+                jsx("div", { className: "_typeface-title-0_1ii32_164 modal-score", children: "3,524"}),
+                jsx( "div", { className: "modal-text", children: "Total players" } ),
+              ],
+            } ),
+          ],
+        } ),
+      } ),
     ],
   } );
 }
@@ -8187,7 +8244,7 @@ function App() {
                 {
                   path: "clicker",
                   children: [
-                    jsx( Route, { path: "", element: canOpen || d ? jsx( ClickerMainPage, {} ) : jsx( BoringDesktop, {} ) } ),
+                    jsx( Route, { path: "", element:  canOpen || d ? jsx( ClickerMainPage, {} ) : jsx( BoringDesktop, {} ) } ),
                     jsx( Route, { path: "houmie", element: jsx( ClickerMainPage, {} ) } ),
                     jsx( Route, { path: "league/:leagueId/:type?", element: jsx( ClickerLeaguePage, {} ) } ),
                     jsx( Route, { path: "league/influencer", element: jsx( ClickerLeagueInfluencerPage, {} ) } ),
