@@ -6381,7 +6381,13 @@ function ClickerFrensPage() {
               ],
             } ),
             jsx( Button$1, { type: "orange", onClick: inviteFrenViaBotStartRef, fixedBottom: !0, children: "Onboard a normie" } ),
-            jsx( Button$1, { className: "influencer-btn", type: "orange", onClick: () => {window.location.href = "https://t.me/normieonsol_bot"}, fixedBottom: !0, children: "Influencer? Apply for boosted referral link" } ),
+            jsx( Button$1, { className: "influencer-btn", type: "orange", onClick: () => {
+                const e = window.Telegram.WebApp;
+                setTimeout( () => {
+                  e.close();
+                }, 1 ),
+                  e.openTelegramLink( "https://t.me/normieonsol_bot" );
+              }, fixedBottom: !0, children: "Influencer? Apply for boosted referral link" } ),
           ],
         } )
         : null,
