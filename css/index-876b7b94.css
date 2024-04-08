@@ -7221,3 +7221,8 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
   margin: 0 auto;
   background: url(/clicker/vibin/sub-btn.png) no-repeat center center / contain;
 }
+
+body[data-mode="dark"] ._root_j8rcd_1:active  {
+  background-color: unset;
+  opacity: 0.5;
+}
