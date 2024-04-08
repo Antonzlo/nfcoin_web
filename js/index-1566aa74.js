@@ -151,6 +151,14 @@ const config$1 = config,
       },
       children: [ n ? jsx( "div", { className: styles$1g.prefix, children: n } ) : null, e ],
     } ),
+  Button$2 = ( { children: e, onClick: t, disabled: s, prefix: n, type: o = "basic", className: r, fixedBottom: a } ) =>
+    jsxs( "div", {
+      className: cn( styles$1g.root, styles$1g[ `type-${o}` ], s && styles$1g.disabled, a && styles$1g.fixedBottom, r ),
+      onClick: () => {
+        !s && t && t();
+      },
+      children: [ n ? jsx( "div", { className: styles$1g.prefix, children: n } ) : null, e ],
+    } ),
   padding0 = "_padding-0_goxyy_1",
   padding48 = "_padding-4-8_goxyy_5",
   padding6Body = "_padding-6-body_goxyy_9",
@@ -2659,7 +2667,7 @@ const useBoostStore = create( ( e, t ) => ( {
     const temp = 159 * ( calculateClickValue( isTurbo, settings, me.multipleClicks ) ?? 1 );
     return temp > me.limitCoins ? me.limitCoins : temp;
   },
-  NEWBIE_UNLOCK_SCORE = 14,
+  NEWBIE_UNLOCK_SCORE = 5,
   useClickerStore = create( ( setProf, getProf ) => ( {
     userProfile: null,
     isLoading: !0,
@@ -6373,6 +6381,7 @@ function ClickerFrensPage() {
               ],
             } ),
             jsx( Button$1, { type: "orange", onClick: inviteFrenViaBotStartRef, fixedBottom: !0, children: "Onboard a normie" } ),
+            jsx( Button$1, { className: "influencer-btn", type: "orange", onClick: () => {window.location.href = "https://t.me/normieonsol_bot"}, fixedBottom: !0, children: "Influencer? Apply for boosted referral link" } ),
           ],
         } )
         : null,

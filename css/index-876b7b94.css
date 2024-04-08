@@ -383,7 +383,7 @@ body[data-mode="dark"] ._root_j8rcd_1:active {
 }
 ._fixedBottom_j8rcd_68 {
   position: fixed;
-  bottom: 16px;
+  bottom: 90px;
   left: 16px;
   right: 16px;
 }
@@ -7208,4 +7208,16 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
 .visibility_hidden {
   visibility: hidden;
   pointer-events: none;
+}
+
+.influencer-btn {
+  width: 50%;
+  height: 100px;
+  font-size: 13px;
+  position: fixed;
+  bottom: 2px;
+  left: 16px;
+  right: 16px;
+  margin: 0 auto;
+  background: url(/clicker/vibin/sub-btn.png) no-repeat center center / contain;
 }
