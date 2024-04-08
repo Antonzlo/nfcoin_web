@@ -5412,13 +5412,23 @@ const root$3 = "_root_9azk3_2",
                         const points = document.querySelectorAll('._clickAmount_9azk3_126');
                         sprite.mlty = mlty;
                         if (sprite.mlty !== 0) {
-                          score.style.color = "#000";
+                          if (score) {
+                            score.style.color = "#000";
+                          }
+                          if (points) {
+                            points.forEach((item) => item.style.color = "#000")
+                          }
                           candleHeight += 10;
                           sprite.ticksPerFrame = Math.max( 3, sprite.ticksPerFrame - 1 );
-                          points.forEach((item) => item.style.color = "#000")
+                          
                         } else {
-                          score.style.color = "#fff";
-                          points.forEach((item) => item.style.color = "#fff")
+                          if (score) {
+                            score.style.color = "#fff";
+                          }
+                          if (points) {
+                            points.forEach((item) => item.style.color = "#fff")
+                          }
+                          
                         }
                         
                         
