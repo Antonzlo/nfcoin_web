@@ -2810,7 +2810,7 @@ const useBoostStore = create( ( e, t ) => ( {
   dailyTasksData = [
     {
       id: 6,
-      title: "Turbo",
+      title: "Gamble",
       description: jsxs( Fragment, { children: [ "Get a Turbo boost now.", jsx( "br", {} ), " Be ready to catch the rocket!" ] } ),
       // icon: "📈",
       icon: "/clicker/vibin/kazik.png",
