@@ -2144,6 +2144,8 @@ body[data-mode="dark"] ._solidTabButton_1aach_48 {
   width: 100%;
   color: var(--color-text-primary);
   text-align: left;
+  /* visibility: hidden; */
+  /* pointer-events: none; */
 }
 ._align-left_1ii32_10 {
   text-align: left;
@@ -2230,7 +2232,7 @@ body[data-mode="dark"] ._solidTabButton_1aach_48 {
   color: var(--color-text-primary);
 }
 ._color-secondary_1ii32_126 {
-  color: var(--color-text-secondary);
+  color: #fff;
 }
 ._color-tertiary_1ii32_130 {
   color: var(--color-text-tertiary);
@@ -2294,7 +2296,7 @@ body[data-mode="dark"] ._solidTabButton_1aach_48 {
 }
 ._typeface-body_1ii32_203 {
   letter-spacing: 0.5px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 22px;
   max-width: 230px;
@@ -2813,7 +2815,7 @@ body {
   gap: 5px;
 }
 ._price_dmcml_1 {
-  color: #fff;
+  color: var(--color-text-secondary);
 }
 ._price_dmcml_1:before {
   content: "";
@@ -2821,7 +2823,7 @@ body {
   width: 16px;
   min-width: 16px;
   height: 16px;
-  background: url(https://yescoin.space/clicker/penny.png) center center/contain;
+  background: url(/clicker/vibin/coin.png) center center/contain;
 }
 ._price_dmcml_1._isCompleted_dmcml_24:before {
   opacity: 0.3;
@@ -4486,7 +4488,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   line-height: 18px;
   color: #ffffff4d;
   white-space: nowrap;
-  color: #fff;
+  color: var(--color-text-secondary);
 }
 ._icon_e8sye_28 {
   font-size: 30px;
@@ -4606,8 +4608,10 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   margin: 15px 15px 0 auto;
 }
 ._modal_kzxmr_41 {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(48px);
+  background: url(/clicker/vibin/robot-bg.png) no-repeat center center / cover;
+  background-size: 100% 100%;
+  /* background: rgba(255, 255, 255, 0.12); */
+  /* backdrop-filter: blur(48px); */
   -webkit-backdrop-filter: blur(48px);
   color: #fff;
   padding-bottom: 16px;
@@ -4804,6 +4808,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   background-image: url(/clicker/vibin/menu-bg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  padding: 5px;
 }
 ._button_do4sl_81 {
   padding: 12px 0;
@@ -6561,6 +6566,8 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
   border-radius: 12px;
   margin: 0 0 24px;
   padding: 16px;
+  padding-bottom: 30px;
+  padding-left: 26px;
   color: #000000;
   font-variant-numeric: lining-nums tabular-nums;
   font-family: Inkverse, monospace;
@@ -6576,7 +6583,8 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
   justify-content: left;
   gap: 4px;
   margin: 12px 0 24px;
-  color: #fff;
+  color: #000;
+  font-size: 46px;
 }
 ._scoreSkeleton_1tybo_77 {
   width: 130px;
@@ -6585,9 +6593,9 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
 ._score_1tybo_69:after {
   content: "";
   display: block;
-  width: 16px;
-  height: 16px;
-  background-image: url(https://yescoin.space/clicker/coin-min.svg);
+  width: 38px;
+  height: 38px;
+  background-image: url(/clicker/vibin/coin.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
@@ -7195,4 +7203,9 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
   /* width: 100%; */
   /* height: 100%; */
   object-fit: contain;
+}
+
+.visibility_hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
