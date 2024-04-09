@@ -2667,7 +2667,7 @@ const useBoostStore = create( ( e, t ) => ( {
     const temp = 159 * ( calculateClickValue( isTurbo, settings, me.multipleClicks ) ?? 1 );
     return temp > me.limitCoins ? me.limitCoins : temp;
   },
-  NEWBIE_UNLOCK_SCORE = 5,
+  NEWBIE_UNLOCK_SCORE = 14,
   useClickerStore = create( ( setProf, getProf ) => ( {
     userProfile: null,
     isLoading: !0,
@@ -3856,7 +3856,7 @@ const placeAndLeague = "_placeAndLeague_xg9t0_1",
           : null,
         i && e === "row" ? jsx( "div", { className: styles$E.dot, children: "・" } ) : null,
         jsxs( "div", {
-          className: styles$E.league,
+          className: cn(styles$E.league, document.pepaSprite && document.pepaSprite.mlty !== 0 && "font-color-white"),
           children: "POINTS!!!",
         } ),
       ],
@@ -4719,7 +4719,7 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
         b( !0 );
         const { ok: L } = [ "challengeCompleted", "telegramPremium", "welcomeToTon" ].indexOf( r ) !== -1 ? await claimPartnerReward( c ) : await f( c );
         L
-          ? ( await y(), k(), g( { message: `Task is done +${beautifyMoney$1( String( a ) )} DoNotCoin`, type: "success" } ) )
+          ? ( await y(), k(), g( { message: `Task is done +${beautifyMoney$1( String( a ) )} Points`, type: "success" } ) )
           : m
             ? ( n && n( t ), o.openTelegramLink( `https://t.me/community_bot/join?startapp=id_${m}-b_nb` ) )
             : g( { message: "You've not completed the task.", type: "error" } ),
@@ -4811,7 +4811,7 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
     oneTitle: "Тапай по монетi на екранi",
     oneDescr: "Та дивись, як зростає баланс",
     twoTitle: "Прокачуй покращення",
-    twoDescr: "Та заробляй DoNotCoin виконуючи завдання",
+    twoDescr: "Та заробляй Points виконуючи завдання",
     threeTitle: "Змагайся з iншими гравцями",
     threeDescr: "Та спробуй дiйти до Diamond лiги",
     fourTitle: "Приєднуйся до команд",
@@ -4822,10 +4822,10 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
   },
   ClickerBoostsExplanationPageL10n = {
     en: {
-      oneTitle: "Tap-to-earn DoNotCoin",
+      oneTitle: "Tap-to-earn Points",
       oneDescr: "Yes, that’s easy",
       twoTitle: "Upgrade your Boosts",
-      twoDescr: "And earn DoNotCoin for tasks",
+      twoDescr: "And earn Points for tasks",
       threeTitle: "Climb to the top",
       threeDescr: "Get to the Diamond league",
       fourTitle: "Join Squad!",
@@ -4836,7 +4836,7 @@ const TaskDailyItem = ( { task: e, onClick: t } ) => {
     },
     ru: {
       oneTitle: "Жми на монету",
-      oneDescr: "И получай DoNotCoin",
+      oneDescr: "И получай Points",
       twoTitle: "Прокачивай Boosts",
       twoDescr: "Чтобы получать больше монет",
       threeTitle: "Соревнуйся с другими",
@@ -5038,7 +5038,15 @@ function Score( { score: e, size: t = 48, duration: s = 1 } ) {
   function r( a, c, i ) {
     return c + ( i - c ) * a;
   }
-  return jsxs( "div", { onClick: () => {document.querySelector(".modal-custome").classList.add('modal-custome_visible')}, className: cn( styles$q.score, styles$q[ `size-${t}` ] ), children: [ jsx( "div", { className: styles$q.scoreIcon } ), beautifyMoney( String( n ) ) ] } );
+  return jsxs( "div", {
+    onClick: () => {
+      document.querySelector(".modal-custome").classList.add('modal-custome_visible')
+    },
+    className:
+      cn( styles$q.score, document.pepaSprite && document.pepaSprite.mlty === 0
+        ?  styles$q[ `size-${t}`] :  styles$q[ `size-${t}`] + ` font-color-white`
+      ),
+    children: [ jsx( "div", { className: styles$q.scoreIcon } ), beautifyMoney( String( n ) ) ] } );
 }
 const root$4 = "_root_do4sl_1",
   scoreBar = "_scoreBar_do4sl_18",
@@ -5090,12 +5098,12 @@ function Progress( { current: e, profile: t } ) {
               jsx( "div", { className: styles$p.scoreIcon } ),
               jsxs( "div", {
                 children: [
-                  jsx( "div", { className: styles$p.scoreCurrent, children: e } ),
+                  jsx( "div", { className: cn( styles$p.scoreCurrent, document.pepaSprite && document.pepaSprite.mlty !== 0 && "font-color-white"), children: e } ),
                   jsxs( "div", {
                     className: styles$p.scoreInner,
                     children: [
                       jsx( "span", { className: styles$p.scoreSlash, children: " " } ),
-                      jsx( "span", { className: styles$p.scoreLimit, children: t == null ? void 0 : t.limitCoins } ),
+                      jsx( "span", { className: cn( styles$p.scoreLimit, document.pepaSprite && document.pepaSprite.mlty !== 0 && "font-color-white"), children: t == null ? void 0 : t.limitCoins } ),
                     ],
                   } ),
                 ],
@@ -5198,13 +5206,14 @@ const root$3 = "_root_9azk3_2",
                 clickValue: clickValue,
                 cooldown: cooldown,
                 handleClick: handleClick,
-                multiple: mty,
+                settingsM: settingsM,
               } ) => {
     const a = reactExports.useRef( null ),
       [ getPos, setPos ] = reactExports.useState( { translateZ: 0, rotateX: 0, rotateY: 0 } ),
       [ l, d ] = reactExports.useState( [] ),
-      [ mlty, setMlty ] = reactExports.useState( mty ),
+      [ mlty, setMlty ] = reactExports.useState( 0 ),
       { currentSkin: currentSkin } = useBoostStore(),
+      beautifyMoney = ( e ) => new Intl.NumberFormat( "en-US" ).format( parseInt( e ) ),
       p = ( u ) => {
         if ( ( handleClick(), a.current ) ) {
           const y = u.touches[ 0 ],
@@ -5227,16 +5236,24 @@ const root$3 = "_root_9azk3_2",
         setPos( { translateZ: 0, rotateX: 0, rotateY: 0 } );
       };
     reactExports.useEffect( () => {
-      setMlty(mty);
-    }, [ mty ] );
+      if (settingsM) {
+        setMlty(settingsM.multiple);
+        if (document.pepaSprite) {
+          document.pepaSprite.mlty = settingsM.multiple;
+        }
+      } else {
+        setMlty(0);
+        if (document.pepaSprite) {
+          document.pepaSprite.mlty = 0;
+        }
+      }
+    }, [ settingsM ] );
     reactExports.useEffect( () => {
       if (canIClickPlease) {
         document.querySelector('.canvas_jasdeq').click();
       }
+      fetchStatistics().then(( {data}) =>  document.querySelector('.modal-score').innerText = beautifyMoney( String( data.users ) ));
     }, [ canIClickPlease ] );
-    if (document.pepaSprite) {
-      document.pepaSprite.mlty = mty;
-    }
     return jsx( AnimatePresence, {
       mode: "popLayout",
       children: canIClickPlease
@@ -5273,7 +5290,7 @@ const root$3 = "_root_9azk3_2",
                         
                         this.clickTimeout = null;
                         
-                        this.mlty = options.mlty;
+                        this.mlty = mlty;
                         this.paused = false;
                         
                         this.loop = this.start();
@@ -5309,6 +5326,7 @@ const root$3 = "_root_9azk3_2",
                       
                       render() {
                         let img = this.image;
+                        
                         if (!this.mlty) {
                           img = this.image;
                         } else if (this.mlty > 0) {
@@ -5383,10 +5401,6 @@ const root$3 = "_root_9azk3_2",
                     const notcoin = document.querySelector( '._notcoin_9azk3_34' );
                     const boxCanvas = document.querySelector('.box-canvas_gdahkd');
                     
-                    if (document.pepaSprite) {
-                      document.pepaSprite.mlty = mlty;
-                    }
-                    
                     if (!notcoin.getAttribute('listener')) {
                       
                       let canvas = document.querySelector( '.canvas_jasdeq' );
@@ -5408,7 +5422,6 @@ const root$3 = "_root_9azk3_2",
                         height: 350,
                         numberOfFrames: 10,
                         ticksPerFrame: 0,
-                        mlty: mlty,
                       } )
                       document.pepaSprite = sprite;
                       
@@ -5416,27 +5429,11 @@ const root$3 = "_root_9azk3_2",
                       
                       notcoin.setAttribute('listener', true)
                       notcoin.addEventListener( 'click', () => {
-                        const score = document.querySelector('._score_55nwt_1');
-                        const points = document.querySelectorAll('._clickAmount_9azk3_126');
-                        sprite.mlty = mlty;
-                        if (sprite.mlty !== 0) {
-                          if (score) {
-                            score.style.color = "#000";
-                          }
-                          if (points) {
-                            points.forEach((item) => item.style.color = "#000")
-                          }
+                        
+                        
+                        if (sprite.mlty === 0) {
                           candleHeight += 10;
                           sprite.ticksPerFrame = Math.max( 3, sprite.ticksPerFrame - 1 );
-                          
-                        } else {
-                          if (score) {
-                            score.style.color = "#fff";
-                          }
-                          if (points) {
-                            points.forEach((item) => item.style.color = "#fff")
-                          }
-                          
                         }
                         
                         
@@ -5505,7 +5502,7 @@ const root$3 = "_root_9azk3_2",
                     jsx(
                       motion.div,
                       {
-                        className: styles$o.clickAmount,
+                        className: cn( mlty === 0 ? styles$o.clickAmount : `${ styles$o.clickAmount} font-color-white`),
                         initial: { opacity: 1, y: u.y - 50, x: u.x },
                         animate: { opacity: 0, y: u.y - 200 },
                         exit: { opacity: 0 },
@@ -7369,6 +7366,7 @@ function ClickerMainPage() {
     } = useClickerStore(),
     [ getA, setA ] = reactExports.useState( !!( !newbie && !isTurbo && ( turboTimes >= 1 || turboGift ) ) ),
     [ showRobot, setB ] = reactExports.useState( !1 ),
+    [ settingsM, setSettingsM] = reactExports.useState(turboSettings),
     { currentSkin: L } = useBoostStore(),
     okToClick = !isLoad && availableToClick > 0 && cooldown === 0,
     tgapp = window.Telegram.WebApp,
@@ -7381,11 +7379,14 @@ function ClickerMainPage() {
       setA( !1 ), switchTurbo( !0 );
     };
   reactExports.useEffect( () => {
-    const A = setInterval( () => {
-      restoreClicks(), checkTurboGiftValidity();
-    }, 1e3 );
-    return () => clearInterval( A );
-  }, [] ),
+    setSettingsM(turboSettings)
+  }, [turboSettings] ),
+    reactExports.useEffect( () => {
+      const A = setInterval( () => {
+        restoreClicks(), checkTurboGiftValidity();
+      }, 1e3 );
+      return () => clearInterval( A );
+    }, [] ),
     reactExports.useEffect( () => {
       tgapp.isExpanded || tgapp.expand();
       const cb = ( F ) => {
@@ -7431,7 +7432,7 @@ function ClickerMainPage() {
         ],
       } ),
       newbie && jsx( "div", { style: { height: "195px" } } ),
-      jsx( Notcoin, { canIClickPlease: okToClick, sleep: isSleep, funMode: isTurbo, clickValue: calculateClickValue( isTurbo, turboSettings, clickValue ), cooldown: cooldown, handleClick: I, multiple: turboSettings == null ? void 0 : turboSettings.multiple } ),
+      jsx( Notcoin, { canIClickPlease: okToClick, sleep: isSleep, funMode: isTurbo, clickValue: calculateClickValue( isTurbo, turboSettings, clickValue ), cooldown: cooldown, handleClick: I, settingsM: settingsM } ),
       !newbie && userProfile && jsx( Progress, { current: availableToClick, profile: userProfile } ),
       jsx( Robot, { isShown: showRobot, minedAmount: robotMined, setShow: setB, claimAction: claimRobot } ),
       jsx( "div", {
@@ -7460,7 +7461,7 @@ function ClickerMainPage() {
             jsxs( "div", {
               className: "modal-description",
               children: [
-                jsx("div", { className: "_typeface-title-0_1ii32_164 modal-score", children: "3,524"}),
+                jsx("div", { className: "_typeface-title-0_1ii32_164 modal-score", children: "0"}),
                 jsx( "div", { className: "modal-text", children: "Total players" } ),
               ],
             } ),
