@@ -2665,7 +2665,7 @@ body {
   height: 100%;
   width: 0;
   border-radius: 14px;
-  background: linear-gradient(270deg, #fefbe9, #ff9a00);
+  background: linear-gradient(270deg, #FEFBF0, #ff9a00);
   transition: all 0.33s ease;
   -webkit-transition: all 0.33s ease;
 }
@@ -4759,7 +4759,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   font-weight: 700;
   line-height: 18px;
   letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(181, 103, 12, 0.25);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
   margin-bottom: 5px;
 }
 ._scoreSlash_do4sl_41 {
@@ -4802,8 +4802,9 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   overflow: hidden;
 }
 ._buttonGroup_do4sl_81 {
-  width: 250px;
+  width: 210px;
   display: flex;
+  justify-content: flex-end;
   /* overflow: hidden; */
   background-image: url(/clicker/vibin/menu-bg.png);
   background-repeat: no-repeat;
@@ -4816,8 +4817,8 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 90px;
-  min-width: 74px;
+  width: 56px;
+  min-width: 64px;
   position: relative;
   user-select: none;
   transition: background-color ease;
@@ -4843,7 +4844,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
 ._button_do4sl_81 ._icon_do4sl_118 {
   /* position: relative; */
   height: 30px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   font-size: 24px;
   font-weight: 590;
   line-height: 24px;
@@ -4851,15 +4852,15 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   text-shadow: 1px 1px 2px rgba(181, 103, 12, 0.25), 0.5px 0.5px 0 rgba(0, 0, 0, 0.04);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_126 {
-  width: 38px;
-  height: 45px;
+  width: 32px;
+  height: 36px;
   background-image: url(/clicker/vibin/drunk-face.png);
   background-repeat: no-repeat;
   background-size: cover;
   transform: translateY(-10px);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_127 {
-  width: 54px;
+  width: 48px;
   height: 33px;
   background-image: url(/clicker/earn-min.png);
   background-repeat: no-repeat;
@@ -4867,7 +4868,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   transform: translateY(-5px);
 }
 ._button_do4sl_81 ._iconCoin_do4sl_128 {
-  width: 52px;
+  width: 45px;
   height: 24px;
   background-image: url(/clicker/powerup-min.png);
   background-repeat: no-repeat;
@@ -5356,8 +5357,8 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   z-index: -2;
 }
 ._root_1cnlb_1_bad_bg {
-  background: url(https://yescoin.space/clicker/red-bg.png);
-  background-size: 20%;
+  background: url(/clicker/red-bg.png);
+  background-size: 100%;
   background-position: center center;
   background-color: #000;
 }
@@ -5368,13 +5369,13 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000b8;
+  background-color: rgba(0, 0, 0, .3);
   z-index: -1;
 }
 
 ._root_1cnlb_1_good_bg {
-  background: url(https://yescoin.space/clicker/green-bg.png);
-  background-size: 20%;
+  background: url(/clicker/green-bg.png);
+  background-size: 100%;
   background-position: center center;
   background-color: #000;
 }
@@ -5423,6 +5424,7 @@ body[data-mode="dark"] ._chevron_1luq8_177 path {
   display: flex;
   background: #000;
   background: url(/clicker/vibin/main-bg3.png) no-repeat center center / cover #000;
+  background-size: 100% 110%;
 }
 ._pageInner_rq9m2_22 {
   position: relative;
@@ -5606,6 +5608,7 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   display: flex;
   background: #000;
   background: url(/clicker/vibin/main-bg4.png) no-repeat center center / cover #000;
+  background-size: 100% 110%;
 }
 ._pageInner_ofiuy_22 {
   position: relative;
@@ -5788,6 +5791,7 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   padding-top: 40px;
   background: #000;
   background: url(/clicker/vibin/main-bg2.png) no-repeat center center / cover #000;
+  background-size: 100% 110%;
 }
 ._pageInner_ygi9q_21 {
   display: flex;
@@ -6340,6 +6344,7 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   user-select: none;
   position: relative;
   z-index: 1;
+  background-size: 100% 110%;
 }
 ._background_1vpj3_27 {
   position: absolute;
@@ -6347,7 +6352,7 @@ body[data-mode="dark"] ._rippleEffect_dasiz_93:active {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(https://yescoin.space/clicker/main_bg.png) no-repeat center center/cover #000;
+  background: url(/clicker/vibin/main-bg1.png) no-repeat center center/cover #000;
   will-change: background-position;
   transition: cubic-bezier(0.7, 0.55, 0.42, 0.33) 0.15s background-position;
 }
@@ -7200,8 +7205,6 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
 }
 
 ._root_18ifw_1 > img {
-  /* width: 100%; */
-  /* height: 100%; */
   object-fit: contain;
 }
 
@@ -7225,4 +7228,13 @@ body[data-mode="dark"] ._rippleEffect_1vpj3_146:active {
 body[data-mode="dark"] ._root_j8rcd_1:active  {
   background-color: unset;
   opacity: 0.5;
+}
+
+.font-color-black {
+  color: black !important;
+}
+
+
+.font-color-white {
+  color: white !important;
 }
